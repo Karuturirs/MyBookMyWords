@@ -1,0 +1,1487 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>MyBook MyWords</title>
+        
+        <meta name="robots" content="noindex" />
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body class="light">
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            document.body.className = theme;
+            document.querySelector('html').className = theme + ' js';
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li><a href="Nvim_cheats.html"><strong aria-hidden="true">1.</strong> NeoVim Editor Cheats</a></li><li><a href="Bash-commands-daytoday.html"><strong aria-hidden="true">2.</strong> Bash cmd</a></li><li><a href="ALGO.html"><strong aria-hidden="true">3.</strong> Algorithms Learning</a></li><li><a href="curl-cheats.html"><strong aria-hidden="true">4.</strong> Curl</a></li><li><a href="Rust-learning.html"><strong aria-hidden="true">5.</strong> Rust Learning</a></li><li><a href="Docker-Learning.html"><strong aria-hidden="true">6.</strong> Docker Cheats</a></li><li><a href="Kubernetes.html"><strong aria-hidden="true">7.</strong> Kubernetes</a></li><li><a href="mocktailbird.html"><strong aria-hidden="true">8.</strong> Mocktailbird</a></li><li><ol class="section"><li><a href="mocktailbird/Mongodb.html"><strong aria-hidden="true">8.1.</strong> Mongodb container setup</a></li><li><a href="mocktailbird/SettingUpMocktailBird.html"><strong aria-hidden="true">8.2.</strong> Mocktailbird container setup</a></li><li><a href="mocktailbird/MocktailBird-docker-cmd.html"><strong aria-hidden="true">8.3.</strong> Mocktailbird docker cmd</a></li></ol></li><li><a href="Python-learning.html"><strong aria-hidden="true">9.</strong> Python</a></li><li><a href="ReadBooks-cheats.html"><strong aria-hidden="true">10.</strong> Personal</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar" class="menu-bar">
+                    <div id="menu-bar-sticky-container">
+                        <div class="left-buttons">
+                            <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                            <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                                <i class="fa fa-paint-brush"></i>
+                            </button>
+                            <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                                <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                            </ul>
+                            
+                            <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                                <i class="fa fa-search"></i>
+                            </button>
+                            
+                        </div>
+
+                        <h1 class="menu-title">MyBook MyWords</h1>
+
+                        <div class="right-buttons">
+                            <a href="print.html" title="Print this book" aria-label="Print this book">
+                                <i id="print-button" class="fa fa-print"></i>
+                            </a>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h2><a class="header" href="#neovim-editor-tips" id="neovim-editor-tips">NeoVim editor tips:</a></h2>
+<ul>
+<li>
+<p>To start Neovim, run <code>nvim</code> </p>
+<h5><a class="header" href="#lesson-1-summary" id="lesson-1-summary">Lesson 1 SUMMARY</a></h5>
+<ol>
+<li>
+<p>The cursor is moved using either the arrow keys or the hjkl keys.
+h (left)   j (down)       k (up)       l (right)</p>
+</li>
+<li>
+<p>To start Vim from the shell prompt type:</p>
+</li>
+</ol>
+<pre><code class="language-sh">      $ vim FILENAME
+</code></pre>
+<ol start="3">
+<li>To exit Vim type: <code>&lt;Esc&gt;</code> <code>:q!</code> <code>&lt;Enter&gt;</code> to trash
+all changes.
+OR type: <code>&lt;Esc&gt;</code> <code>:wq</code> <code>&lt;Enter&gt;</code> to save
+the changes.</li>
+<li>To delete the character at the cursor type: <code>x</code></li>
+<li>To insert or append text type:
+<code>i</code> insert text <code>&lt;Esc&gt;</code>     insert before the cursor.
+<code>A</code> append text <code>&lt;Esc&gt;</code>     append after the line.</li>
+</ol>
+<h5><a class="header" href="#lesson-2-summary" id="lesson-2-summary">Lesson 2 SUMMARY</a></h5>
+<ol>
+<li>To delete from the cursor up to the next word type:    <code>dw</code></li>
+<li>To delete from the cursor to the end of a line type:   <code>d$</code></li>
+<li>To delete a whole line type:                           <code>dd</code></li>
+<li>To repeat a motion prepend it with a number:           <code>2w</code></li>
+<li>The format for a change command is:
+operator   [number]   motion
+where:
+operator -   is what to do, such as d for delete
+[number] -   is an optional count to repeat the motion
+motion   -   moves over the text to operate on, such as:
+w (word),
+$ (to the end of line), etc.</li>
+<li>To move to the start of the line use a zero: 0</li>
+<li>To undo previous actions, type:            <code>u</code>  (lowercase u)
+To undo all the changes on a line, type:   <code>U</code>  (capital U)
+To undo the undo's, type:                  <code>&lt;C-r&gt;</code></li>
+</ol>
+<h5><a class="header" href="#lesson-3-summary" id="lesson-3-summary">Lesson 3 SUMMARY</a></h5>
+<ol>
+<li>
+<p>To put back text that has just been deleted, type p. This puts the
+deleted text AFTER the cursor (if a line was deleted it will go on the
+line below the cursor).</p>
+</li>
+<li>
+<p>To replace the character under the cursor, type r and then the
+character you want to have there.</p>
+</li>
+<li>
+<p>The change operator allows you to change from the cursor to where
+the motion takes you. Type <code>ce</code> to change from the cursor to the
+end of the word, <code>c$</code> to change to the end of a line.</p>
+</li>
+<li>
+<p>The format for change is:</p>
+<p>c   [number]   motion</p>
+</li>
+</ol>
+<h5><a class="header" href="#lesson-4-summary" id="lesson-4-summary">Lesson 4 SUMMARY</a></h5>
+<ol>
+<li><code>&lt;C-g&gt;</code>     displays your location and the file status.
+<code>G</code>         moves to the end of the file.
+number <code>G</code> moves to that line number.
+<code>gg</code>        moves to the first line.</li>
+<li>Typing <code>/</code> followed by a phrase searches FORWARD for the phrase.
+Typing <code>?</code> followed by a phrase searches BACKWARD for the phrase.
+After a search type <code>n</code> to find the next occurrence in the same
+direction or <code>N</code> to search in the opposite direction.
+<code>&lt;C-o&gt;</code> takes you back to older positions, <code>&lt;C-i&gt;</code> to
+newer positions.</li>
+<li>Typing <code>%</code> while the cursor is on a (,),[,],{, or } goes to its
+match.</li>
+<li>To substitute new for the first old in a line type</li>
+</ol>
+<pre><code class="language-cmd">				:s/old/new
+</code></pre>
+<p>To substitute new for all 'old's on a line type</p>
+<pre><code class="language-cmd">        :s/old/new/g
+</code></pre>
+<p>To substitute phrases between two line #'s type</p>
+<pre><code class="language-cmd">        :#,#s/old/new/g
+</code></pre>
+<p>To substitute all occurrences in the file type</p>
+<pre><code class="language-cmd">        :%s/old/new/g
+</code></pre>
+<p>To ask for confirmation each time add 'c'</p>
+<pre><code class="language-cmd">        :%s/old/new/gc
+</code></pre>
+<h5><a class="header" href="#lesson-5-summary" id="lesson-5-summary">Lesson 5 SUMMARY</a></h5>
+<ol>
+<li>
+<p><code>:!</code> command executes an external command.</p>
+<p>Some useful examples are:
+<code>:!ls</code>              -  shows a directory listing
+<code>:!rm FILENAME</code>     -  removes file FILENAME</p>
+</li>
+<li>
+<p><code>:w FILENAME</code>   writes the current Vim file to disk with
+name FILENAME.</p>
+</li>
+<li>
+<p><code>v</code>  motion, select all the lines thats needed,  <code>:w FILENAME</code>   saves the Visually selected lines in file
+FILENAME.</p>
+</li>
+<li>
+<p><code>:r FILENAME</code>  retrieves disk file FILENAME and puts it
+below the cursor position.</p>
+</li>
+<li>
+<p><code>:r !dir  </code>     reads the output of the dir command and
+puts it below the cursor position.</p>
+</li>
+</ol>
+<h5><a class="header" href="#lesson-6-summary" id="lesson-6-summary">Lesson 6 SUMMARY</a></h5>
+<ol>
+<li>
+<p>Type <code>o</code> to open a line BELOW the cursor and start Insert mode.
+Type <code>O</code> to open a line ABOVE the cursor.</p>
+</li>
+<li>
+<p>Type <code>a</code> to insert text AFTER the cursor.
+Type <code>A</code> to insert text after the end of the line.</p>
+</li>
+<li>
+<p>The <code>e</code> command moves to the end of a word.</p>
+</li>
+<li>
+<p>The <code>y</code> operator copies text, <code>p</code> pastes it.</p>
+</li>
+<li>
+<p>Typing a capital <code>R</code> enters Replace mode until <code>&lt;Esc&gt;</code> is
+pressed.</p>
+</li>
+<li>
+<p>Typing &quot;:set xxx&quot; sets the option &quot;xxx&quot;. Some options are:</p>
+<pre><code>'ic' 'ignorecase'   ignore upper/lower case when searching
+'is' 'incsearch'    show partial matches for a search phrase
+'hls' 'hlsearch'    highlight all matching phrases
+</code></pre>
+<p>You can either use the long or the short option name.</p>
+</li>
+<li>
+<p>Prepend &quot;no&quot; to switch an option off:</p>
+</li>
+</ol>
+<pre><code class="language-cmd">        :set noic
+</code></pre>
+<ol start="8">
+<li>Prepend &quot;inv&quot; to toggle an option:</li>
+</ol>
+<pre><code class="language-cmd">        :set invic
+</code></pre>
+<ol start="9">
+<li>
+<p>If you want to ignore case for just one search command, use \c
+in the phrase:</p>
+<p><code>/ignore\c &lt;Enter&gt;</code></p>
+</li>
+</ol>
+<h5><a class="header" href="#lesson-7-summary" id="lesson-7-summary">Lesson 7 SUMMARY</a></h5>
+<ol>
+<li>
+<p>Type <code>:help</code>
+or press <code>&lt;F1&gt;</code> or <code>&lt;Help&gt;</code> to open a help window.</p>
+</li>
+<li>
+<p>Type <code>:help TOPIC</code> to find help on TOPIC.</p>
+</li>
+<li>
+<p>Type <code>&lt;C-w&gt;&lt;C-w&gt;</code> to jump to another window</p>
+</li>
+<li>
+<p>Type <code>:q</code> to close the help window</p>
+</li>
+<li>
+<p>Create a vimrc startup script to keep your preferred settings.</p>
+</li>
+<li>
+<p>While in command mode, press <code>&lt;C-d&gt;</code> to see possible completions.
+Press <code>&lt;Tab&gt;</code> to use one completion.</p>
+</li>
+</ol>
+<h5><a class="header" href="#conclusion" id="conclusion">CONCLUSION</a></h5>
+<p>This was intended to give a brief overview of the Vim editor, just enough to
+allow you to use the editor fairly easily. It is far from complete as Vim has
+many many more commands. Consult the help often.</p>
+<p>There are many resources online to learn more about vim. Here's a bunch of
+them:</p>
+<ul>
+<li>Learn Vim Progressively: http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/</li>
+<li>Learning Vim in 2014: http://benmccormick.org/learning-vim-in-2014/</li>
+<li>Vimcasts: http://vimcasts.org/</li>
+<li>Vim Video-Tutorials by Derek Wyatt: http://derekwyatt.org/vim/tutorials/</li>
+<li>Learn Vimscript the Hard Way: http://learnvimscriptthehardway.stevelosh.com/</li>
+<li>7 Habits of Effective Text Editing: http://www.moolenaar.net/habits.html</li>
+<li>vim-galore: https://github.com/mhinz/vim-galore</li>
+</ul>
+</li>
+</ul>
+<h2><a class="header" href="#bash-world" id="bash-world">Bash world</a></h2>
+<h4><a class="header" href="#bash-shortcuts" id="bash-shortcuts">Bash shortcuts</a></h4>
+<pre><code class="language-cmd">shopt -s cdspell    //(corrects typoos)
+ctrl + _            //(undo)
+ctrl + arrow        //(move forward a word)
+ctrl + a            //(move cursor to start)
+ctrl + e            //(move cursor to end)
+ctrl + k            //(cuts everything after the cursor)
+ctrl + l            //(clears screen)
+ctrl + q            //(resume command that is in the foreground)
+ctrl + s            //(pause a long running command in the foreground)
+ctrl + t            //(swap two characters)
+ctrl + u            //(cuts everything before the cursor)
+ctrl + x + ctrl + e //(opens the command string in an editor so that you can edit it before it runs)
+ctrl + x + *        //(expand glob/star)
+ctrl + xx           //(move to the opposite end of the line)
+ctrl + y            //(pastes from the buffer)
+ctrl + shift + c/v  //(copy/paste into terminal)
+</code></pre>
+<h4><a class="header" href="#running-commands-in-sequence" id="running-commands-in-sequence">Running commands in sequence</a></h4>
+<blockquote>
+<p>&amp;&amp; (run second command if the first is successful)
+; (run second command regardless of success of first one)</p>
+</blockquote>
+<h4><a class="header" href="#redirecting-io" id="redirecting-io">Redirecting I/O</a></h4>
+<blockquote>
+<p>2&gt;&amp;1 (redirect stdout and stderr to a file)</p>
+</blockquote>
+<h4><a class="header" href="#check-for-open-ports" id="check-for-open-ports">check for open ports</a></h4>
+<p><code>echo &gt; /dev/tcp/&lt;server ip&gt;/&lt;port&gt;</code></p>
+<h4><a class="header" href="#examine-executable" id="examine-executable">Examine executable</a></h4>
+<p>which <command>
+file &lt;path/to/file&gt;
+command -V <some command binary> (tells you whether <some binary> is a built-in, binary or alias)</p>
+<h4><a class="header" href="#history-related" id="history-related">History related</a></h4>
+<pre><code class="language-cmd">ctrl + r (reverse search)
+!! (rerun last command)
+!* (reuse arguments from previous command)
+!$ (use last argument of last command)
+shopt -s histappend (allow multiple terminals to write to the history file)
+history | awk 'BEGIN {FS=&quot;[ \t]+|\\|&quot;} {print $3}' | sort | uniq -c | sort -nr | head (list the most used history commands)
+history | awk '{print $1}' | sort  | uniq -c | sort --numeric-sort --reverse | head -10
+</code></pre>
+<h4><a class="header" href="#file-and-navigation" id="file-and-navigation">File and navigation</a></h4>
+<pre><code class="language-cmd">cp /home/foo/realllylongname.cpp{,-old}
+cd -
+rename 's/text_to_find/been_renamed/' *.txt
+export CDPATH='/var/log:~' (variable is used with the cd built-in.)
+</code></pre>
+<h4><a class="header" href="#enable-colors" id="enable-colors">enable colors</a></h4>
+<pre><code class="language-cmd">eval &quot;`dircolors -b`&quot;
+</code></pre>
+<h4><a class="header" href="#force-ls-to-always-use-color-and-type-indicators" id="force-ls-to-always-use-color-and-type-indicators">force ls to always use color and type indicators</a></h4>
+<pre><code class="language-cmd">alias ls='ls -hF --color=auto'
+</code></pre>
+<h4><a class="header" href="#make-the-dir-command-work-kinda-like-in-windows-long-format" id="make-the-dir-command-work-kinda-like-in-windows-long-format">make the dir command work kinda like in windows (long format)</a></h4>
+<pre><code class="language-cmd">alias dir='ls --color=auto --format=long'
+</code></pre>
+<h4><a class="header" href="#make-grep-highlight-results-using-color" id="make-grep-highlight-results-using-color">make grep highlight results using color</a></h4>
+<pre><code class="language-cmd">export GREP_OPTIONS='--color=auto'
+
+export LESS_TERMCAP_mb=$'\E[01;31m'
+export LESS_TERMCAP_md=$'\E[01;33m'
+export LESS_TERMCAP_me=$'\E[0m'
+export LESS_TERMCAP_se=$'\E[0m' # end the info box
+export LESS_TERMCAP_so=$'\E[01;42;30m' # begin the info box
+export LESS_TERMCAP_ue=$'\E[0m'
+export LESS_TERMCAP_us=$'\E[01;36m'
+</code></pre>
+<h1><a class="header" href="#algorithms" id="algorithms">Algorithms</a></h1>
+<table><thead><tr><th align="center">Name</th><th align="center">Time complexity</th><th align="center">Space complexity</th><th align="center">Notes</th></tr></thead><tbody>
+<tr><td align="center">Insertion Sort</td><td align="center">$n^2$</td><td align="center">1</td><td align="center">cards sorted right to left in hand</td></tr>
+<tr><td align="center">Merge Sort</td><td align="center">$n*log n $</td><td align="center">$n$</td><td align="center">DIvide and conquer, two sorted piles shown up. create new pile which ever is small</td></tr>
+<tr><td align="center">Bubble sort</td><td align="center">$n^2$</td><td align="center">1</td><td align="center">comparing to insertion sort is much faster even if though they are $n^2$</td></tr>
+<tr><td align="center">Horners rule</td><td align="center">$n$</td><td align="center"></td><td align="center">y = a0 + x * a1 + x^2 * a2 + x^3 * a3 + ....... + x^(n) * a(n)</td></tr>
+<tr><td align="center">Boyer–Moore</td><td align="center"></td><td align="center"></td><td align="center"></td></tr>
+<tr><td align="center">Strassens</td><td align="center">$n^(log7)$  = $n^(2.81)$</td><td align="center"></td><td align="center">square matrix multiplication($n^3$)</td></tr>
+<tr><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td></tr>
+</tbody></table>
+<h2><a class="header" href="#notes" id="notes">notes</a></h2>
+<ul>
+<li>
+<p>Insertion sort picking a card from the desk one after other and filling in sorting order from right to left</p>
+</li>
+<li>
+<p>Merge sort is whne you have two sorted pile facing up, pick the smallest of both pile and place it in new third pile. but do it recursive.</p>
+</li>
+<li>
+<p>Binery search:</p>
+<blockquote>
+<p>observe that if the sequence A is sorted, we can check the midpoint of the sequence against  and eliminate half of the sequence from further consideration. The binary search algorithm repeats this procedure, halving the size of the remaining portion of the sequence each time. Write pseudocode, either iterative or recursive, for binary search. Argue that the worst-case running time of binary search is $log n$</p>
+</blockquote>
+</li>
+</ul>
+<h2><a class="header" href="#curl-cheats" id="curl-cheats">Curl Cheats</a></h2>
+<h4><a class="header" href="#only-response-body" id="only-response-body">Only response body</a></h4>
+<blockquote>
+<p>curl -X GET http://www.google.com</p>
+</blockquote>
+<h4><a class="header" href="#only-response-headers" id="only-response-headers">Only response headers</a></h4>
+<blockquote>
+<p>curl -sD - -o /dev/null  http://www.google.com</p>
+</blockquote>
+<h4><a class="header" href="#only-response-time" id="only-response-time">Only Response time</a></h4>
+<blockquote>
+<p>curl -o /dev/null -s -w %{time_total}\n  https://www.google.com</p>
+</blockquote>
+<h1><a class="header" href="#rust-learning" id="rust-learning">Rust Learning</a></h1>
+<h5><a class="header" href="#setup-on-mac-or-linux" id="setup-on-mac-or-linux">Setup on mac or linux</a></h5>
+<p><code>$ curl https://sh.rustup.rs -sSf | sh</code></p>
+<h5><a class="header" href="#update" id="update">update</a></h5>
+<p><code>$ rustup update</code></p>
+<h5><a class="header" href="#version" id="version">version</a></h5>
+<p><code> $ rustup —version</code></p>
+<p><code>$ rustc —version</code></p>
+<h5><a class="header" href="#uninstall" id="uninstall">uninstall</a></h5>
+<p><code> $ rustup self uninstall</code></p>
+<h5><a class="header" href="#offline-book" id="offline-book">offline Book</a></h5>
+<p><code> $ rustup docs --book</code></p>
+<h5><a class="header" href="#project-dev" id="project-dev">Project Dev</a></h5>
+<ul>
+<li>
+<p>useful command</p>
+<p><strong>Cargo</strong>  build management</p>
+<blockquote>
+<p><code> $ cargo new bolts-with-rust</code> // new project, - -help command has more options</p>
+<p><code>$ cargo build</code> // compiles &amp; generates executable </p>
+<p><code> $ cargo run</code> // build and run in one step </p>
+<p><code> $ cargo check</code> //compiles but dont create executable</p>
+<p><code> $ cargo build —release</code> // for release build which is much fast creating target/release instead of target/debug</p>
+<p><code>$ cargo doc —open </code> //which will build documentation provided by all of your dependencies locally and open it in your browser</p>
+<p><code>$ cargo test</code>  // for running test in parallel</p>
+<p><code>$ cargo test — —test-threads=1</code> //run tests one after other</p>
+<p><code>$ cargo test -- —nocapture</code>  // to see println statement when test cases passed, by default if failed  output statements are see on command line.</p>
+<p><code>$ cargo test &lt;testname&gt;</code> // to run only one test</p>
+<p><code>$ cargo test &lt;any part ofthe name&gt; // to run all tests that contain the part of  name</code></p>
+<p><code>$ cargo test -- —ignored</code> // to run ignored tests</p>
+<p><code>$ cargo test --test integration_test</code> //run only an integration_test.rs file in tests folder.</p>
+</blockquote>
+</li>
+</ul>
+<h2><a class="header" href="#docker-cheats" id="docker-cheats">Docker Cheats</a></h2>
+<h4><a class="header" href="#list-docker-cli-commands" id="list-docker-cli-commands">List Docker CLI commands</a></h4>
+<pre><code class="language-cmd">$ docker
+$ docker container --help
+</code></pre>
+<h4><a class="header" href="#display-docker-version-and-info" id="display-docker-version-and-info">Display Docker version and info</a></h4>
+<pre><code class="language-cmd">$ docker --version
+$ docker version
+$ docker info
+</code></pre>
+<h4><a class="header" href="#execute-docker-image" id="execute-docker-image">Execute Docker image</a></h4>
+<pre><code class="language-cmd">$ docker run hello-world
+</code></pre>
+<h4><a class="header" href="#list-docker-images" id="list-docker-images">List Docker images</a></h4>
+<pre><code class="language-cmd">$ docker image ls
+</code></pre>
+<h4><a class="header" href="#list-docker-containers-running-all-all-in-quiet-mode" id="list-docker-containers-running-all-all-in-quiet-mode">List Docker containers (running, all, all in quiet mode)</a></h4>
+<pre><code class="language-cmd">$ docker container ls
+$ docker container ls --all
+$ docker container ls -aq
+</code></pre>
+<h4><a class="header" href="#this-creates-a-docker-image-which-were-going-to-name-using-the---tag-option" id="this-creates-a-docker-image-which-were-going-to-name-using-the---tag-option">This creates a Docker image, which we’re going to name using the --tag option.</a></h4>
+<ul>
+<li>Use -t if you want to use the shorter option.</li>
+</ul>
+<pre><code class="language-cmd">$ docker build --tag=friendlyhello .
+</code></pre>
+<ul>
+<li>
+<p>Note how the tag defaulted to latest. The full syntax for the tag option would be something like</p>
+<blockquote>
+<p>--tag=friendlyhello:v0.0.1</p>
+</blockquote>
+</li>
+</ul>
+<h4><a class="header" href="#set-proxy-server-replace-hostport-with-values-for-your-servers" id="set-proxy-server-replace-hostport-with-values-for-your-servers">Set proxy server, replace host:port with values for your servers</a></h4>
+<blockquote>
+<p>ENV http_proxy host:port</p>
+</blockquote>
+<blockquote>
+<p>ENV https_proxy host:port</p>
+</blockquote>
+<h4><a class="header" href="#run-the-app-mapping-your-machines-port-4000-to-the-containers-published-port-80-using--p" id="run-the-app-mapping-your-machines-port-4000-to-the-containers-published-port-80-using--p">Run the app, mapping your machine’s port 4000 to the container’s published port 80 using -p:</a></h4>
+<pre><code class="language-cmd">$ docker run -p 4000:80 friendlyhello
+</code></pre>
+<h4><a class="header" href="#run-the-app-in-the-background-in-detached-mode" id="run-the-app-in-the-background-in-detached-mode">Run the app in the background, in detached mode:</a></h4>
+<pre><code class="language-cmd">$ docker run -d -p 4000:80 friendlyhello
+</code></pre>
+<h4><a class="header" href="#use-docker-container-stop-to-end-the-process-using-the-container-id-like-so" id="use-docker-container-stop-to-end-the-process-using-the-container-id-like-so">Use docker container stop to end the process, using the CONTAINER ID, like so:</a></h4>
+<pre><code class="language-cmd">$ docker container stop 1fa4ab2cf395
+</code></pre>
+<h4><a class="header" href="#run-docker-tag-image-with-your-username-repository-and-tag-names-so-that-the-image-uploads-to-your-desired-destination" id="run-docker-tag-image-with-your-username-repository-and-tag-names-so-that-the-image-uploads-to-your-desired-destination">Run docker tag image with your username, repository, and tag names so that the image uploads to your desired destination.</a></h4>
+<pre><code class="language-cmd">$ docker tag image username/repository:tag
+</code></pre>
+<h4><a class="header" href="#upload-your-tagged-image-to-the-repository" id="upload-your-tagged-image-to-the-repository">Upload your tagged image to the repository:</a></h4>
+<pre><code class="language-cmd">$ docker push username/repository:tag
+</code></pre>
+<h4><a class="header" href="#all-at-one-place" id="all-at-one-place">All at one place</a></h4>
+<pre><code class="language-cmd">docker build -t friendlyhello .  # Create image using this directory's Dockerfile
+docker run -p 4000:80 friendlyhello  # Run &quot;friendlyname&quot; mapping port 4000 to 80
+docker run -d -p 4000:80 friendlyhello         # Same thing, but in detached mode
+docker container ls                                # List all running containers
+docker container ls -a             # List all containers, even those not running
+docker container stop &lt;hash&gt;           # Gracefully stop the specified container
+docker container kill &lt;hash&gt;         # Force shutdown of the specified container
+docker container rm &lt;hash&gt;        # Remove specified container from this machine
+docker container rm $(docker container ls -a -q)         # Remove all containers
+docker image ls -a                             # List all images on this machine
+docker image rm &lt;image id&gt;            # Remove specified image from this machine
+docker image rm $(docker image ls -a -q)   # Remove all images from this machine
+docker login             # Log in this CLI session using your Docker credentials
+docker tag &lt;image&gt; username/repository:tag  # Tag &lt;image&gt; for upload to registry
+docker push username/repository:tag            # Upload tagged image to registry
+docker run username/repository:tag                   # Run image from a registry
+docker run -it mocktail-bird-dev /bin/bash     # Logging into image created
+docker exec -it mockatail.bird-dev /bin/bash   # Logging into Container created
+</code></pre>
+<h4><a class="header" href="#a-docker-composeyml-file-is-a-yaml-file-that-defines-how-docker-containers-should-behave-in-production" id="a-docker-composeyml-file-is-a-yaml-file-that-defines-how-docker-containers-should-behave-in-production">A docker-compose.yml file is a YAML file that defines how Docker containers should behave in production</a></h4>
+<pre><code class="language-cmd">docker stack ls                                            # List stacks or apps
+docker stack deploy -c &lt;composefile&gt; &lt;appname&gt;  # Run the specified Compose file
+docker service ls                 # List running services associated with an app
+docker service ps &lt;service&gt;                  # List tasks associated with an app
+docker inspect &lt;task or container&gt;                   # Inspect task or container
+docker container ls -q                                      # List container IDs
+docker stack rm &lt;appname&gt;                             # Tear down an application
+docker swarm leave --force      # Take down a single node swarm from the manager
+</code></pre>
+<h4><a class="header" href="#remove-images-and-containers" id="remove-images-and-containers">Remove images and containers</a></h4>
+<pre><code class="language-cmd">docker rmi $(docker images)
+docker rm $(docker ps -a)
+</code></pre>
+<h4><a class="header" href="#run-cassandra" id="run-cassandra">Run cassandra</a></h4>
+<pre><code class="language-cmd">docker run --name cassandra-db --network some-network -d cassandra:tag
+</code></pre>
+<h1><a class="header" href="#kubernetes" id="kubernetes">Kubernetes</a></h1>
+<hr />
+<p><img src="./images/Kube.png" alt="Kube" /></p>
+<h3><a class="header" href="#list-docker-cli-commands-1" id="list-docker-cli-commands-1">List Docker CLI commands</a></h3>
+<pre><code class="language-cmd">$ kubectl version
+
+# Run pods
+$ kubectl run [podname] --image=imagename:version
+
+# Lists only pods
+$ kubectl get pods
+
+# Lists all respources
+$ kubectl get all
+
+# Expose a pod port to access the pod
+$ kubectl port-forward [name-of-pod] 8080:80
+
+# Will cause pod to be recreated
+$ kubectl delete pod [name-of-pod]
+
+# Delete Deployment that manages the pod
+$ kubectl delete deployment [name-of-pod-deployment]
+</code></pre>
+<h4><a class="header" href="#yaml" id="yaml">YAML</a></h4>
+<ul>
+<li>YAML files are composed of maps and lists</li>
+<li>Indentation matters ( be consistence! )</li>
+<li>Always use spaces</li>
+<li>Maps:
+<ul>
+<li>name: value pairs</li>
+<li>Maps can contain other maps for more complex data structures</li>
+</ul>
+</li>
+<li>Lists: </li>
+</ul>
+<h4><a class="header" href="#defining-a-pod-with-yaml" id="defining-a-pod-with-yaml">Defining a Pod with YAML</a></h4>
+<pre><code class="language-yaml">apiVersion: v1
+kind: Pod
+metadata:
+ name: mocktailbird-pod
+ labels:
+  component: web
+spec:
+ containers:
+ - name: mocktailbird-app
+   image: mocktailbird_app:latest
+   ports:
+   - containerPort:8080
+</code></pre>
+<p>Creating a Pod Using YAML</p>
+<pre><code class="language-cmd"># Perform a &quot;trial&quot; create and also validate the YAML
+kubectl create -f file.pod.yml --dry-run --validate=true
+
+# Create a pod from YAML
+# Will error if Pod already exists
+kubectl create -f file.pod.yml
+
+# alternate way to create or apply chnages to a POD from YAML
+kubectl apply -f file.pod.yml
+
+# Use --save-config when you want to use 
+# kubectl apply in the future
+kubectl create -f file.pod.yml --save-config
+
+# alternate ways to apply 
+kubectl edit 
+kubectl patch
+
+# Deleting a Pod
+kubectl delete pod [name-of-pod]
+
+# Delete Pod using YAML file that created it
+kubectl delete -f file.pod.yml
+
+#Shows information about event on pod/image/container
+kubectl describe pod [pod-name]
+
+# Go into container of the Pod
+kubectl exec [pod-name] -it sh
+
+# edit the pod in cmd
+kubectl edit -f file.pod.yml
+</code></pre>
+<h3><a class="header" href="#health-of-pods" id="health-of-pods">Health of Pods</a></h3>
+<p>Two Types:</p>
+<ol>
+<li>
+<p><strong>Liveness probes:</strong> determine if a Pod is healthy and running as expected</p>
+<pre><code class="language-yml">apiVersion: v1
+kind: Pod
+metadata:
+ name: mocktailbird-pod
+spec:
+ containers:
+ - name: mocktailbird-app
+   image: mocktailbird_app:latest
+   livenessProbe:
+    httpGet:
+    	path: /Hello
+    	port: 9080
+    initialDelaySeconds: 15
+    timeoutSeconds: 2
+    periodSeconds: 5
+    failureThreshold: 1
+   ports:
+   - containerPort:9080
+</code></pre>
+<p>ExecAction - Executes an action inside the container</p>
+<p>TCPSocketAction - TCP check against the container's IP address on a specified port</p>
+<p>HTTPGetAction - HTTP GET request against container</p>
+</li>
+<li>
+<p><strong>Readiness probes:</strong> determine if a Pod should receive requests</p>
+<pre><code class="language-yml">apiVersion: v1
+kind: Pod
+metadata:
+ name: mocktailbird-pod
+spec:
+ containers:
+ - name: mocktailbird-app
+   image: mocktailbird_app:latest
+   readinessProbe:
+    httpGet:
+    	path: /Hello
+    	port: 9080
+    initialDelaySeconds: 2
+    periodSeconds: 5
+   ports:
+   - containerPort:9080
+</code></pre>
+</li>
+</ol>
+<p>Failed Pod containers are recreated by default(restartPolicy defaults to Always).</p>
+<h3><a class="header" href="#replicasets--deployments" id="replicasets--deployments">Replicasets &amp; Deployments</a></h3>
+<p>A ReplicaSet is a declarative way to manage Pods</p>
+<p><img src="./images/Replicasets.png" alt="Replicasets" /></p>
+<p>A Deployment is a declarative way to manage Pods using a ReplicaSet</p>
+<p>If pod is destroyed the Deployments and ReplicaSets ensure Pods stay running and can be used to scale Pods</p>
+<p><img src="./images/Deployments.png" alt="Deployments" /></p>
+<h4><a class="header" href="#defining-a-deployment" id="defining-a-deployment">Defining a Deployment</a></h4>
+<p>Highe level</p>
+<pre><code class="language-yml">apiVersion: apps/v1
+kind: Deployment
+metadata:
+spec:
+ selector:
+ template:
+  spec:
+   containers:
+   - name: mocktailbird-app
+   image: mocktailbird_app:latest 
+</code></pre>
+<p>Deep</p>
+<pre><code class="language-yml">apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: web
+ labels:
+  app: mocktailbird
+  tier: services
+spec:
+ replicas: 3
+ selector:
+  matchLabels:
+   tier: services
+ template:
+  metadata:
+   labels:
+    tier: services
+  spec:
+   containers:
+   - name: mocktailbird-app
+   image: mocktailbird_app:latest 
+</code></pre>
+<pre><code class="language-cmd"># Create a Deployment
+kubectl create -f file.deployment.yml
+kubectl apply -f file.deployment.yml
+
+# getting all deployments
+kubectl get deployments
+
+# List all Deployments and their labels
+kubectl get deployment --show-labels
+
+# get all deployments with a specific label
+kubectl get deployment -l app=ngnix
+
+# Delete a Deployment
+kubectl delete deployment [deployment-name]
+
+# Scale the Deployment Pods to %
+kubectl scale deployment [deployment-name] --replicas=5
+
+# Scale by refencing the YAML file
+kubectl scale -f file.deployment.yml --replicas=5
+</code></pre>
+<h3><a class="header" href="#deployment-option" id="deployment-option">Deployment Option</a></h3>
+<p>Zero dewntime deployments, update an application's pods without impacting end users</p>
+<ul>
+<li>Rolling updates</li>
+<li>Blue-green Deployments ( AB deployments)</li>
+<li>Canary deployments</li>
+<li>Rollbacks</li>
+</ul>
+<h3><a class="header" href="#services" id="services">Services</a></h3>
+<p>Single point of entry for accessing one or more Pods</p>
+<p><img src="./images/Services.png" alt="Services" /></p>
+<h4><a class="header" href="#service-types" id="service-types">Service Types:</a></h4>
+<ul>
+<li>
+<p><strong>ClusterIP -</strong> Expose the service on a cluster-internal IP(default)</p>
+</li>
+<li>
+<p><strong>NodePort -</strong> Expose the service on each Node's Ip at a static port</p>
+<pre><code class="language-yml">  apiVersion: v1
+  kind: Service
+  metadata:
+    ...
+  spec:
+   type: NodePort
+   selector:
+    app: ngnix
+   ports:
+    - port:80
+      targetPort: 80
+      nodePort:31000 #optional will set default
+</code></pre>
+</li>
+<li>
+<p><strong>LoadBalancer -</strong> Provision an external IP to act as a load balancer for the service</p>
+<pre><code class="language-yml">  apiVersion: v1
+  kind: Service
+  metadata:
+    ...
+  spec:
+   type: LoadBalancer
+   selector:
+    app: ngnix
+   ports:
+    - port:80
+      targetPort: 80
+</code></pre>
+<p>LoadBalancer wont work in local (with out cluster setup) use other METALLB setup for testing loadbalancer.</p>
+</li>
+<li>
+<p><strong>ExternalName -</strong> maps a service to a DNS name</p>
+<pre><code class="language-yml">  apiVersion: v1
+  kind: Service
+  metadata:
+   name: external-service
+  spec:
+   type: ExternalName
+   externalName: api.acmecorp.com
+   ports:
+    - port:80
+</code></pre>
+<pre><code class="language-cmd"># Listen on port 8080 locally and forward to port 80 in Pod
+kubectl port-forward pod/[pod-name] 8080:80
+
+# Listen on port 8080 locally and forward to Deployment's Pod
+kubectl port-forward deployment/[deployment-name] 8080
+
+# Listen on port 8080 locally and forward to Service's Pod
+kubectl port-forward service/[service-name] 8080
+</code></pre>
+<h4><a class="header" href="#service-with-yaml" id="service-with-yaml">Service with YAML</a></h4>
+<pre><code class="language-yml">apiVersion: v1
+kind: Service
+metadata:
+ name: mocktailbird-pod
+spec:
+ containers:
+ - name: mocktailbird-app
+   image: mocktailbird_app:latest
+   livenessProbe:
+    httpGet:
+    	path: /Hello
+    	port: 9080
+    initialDelaySeconds: 15
+    timeoutSeconds: 2
+    periodSeconds: 5
+    failureThreshold: 1
+   ports:
+   - containerPort:9080
+</code></pre>
+<pre><code class="language-cmd"># Create a service
+kubectl create -f file.service.yml --save-congfig
+  
+# update a service
+kubectl apply -f file.service.yml
+  
+# Delete service
+kubectl delete -f file.service.yml
+  
+# shell into a Pod and test a URL. Add -c [containerID]
+# in cases where multiple containers are running in the POD // if curl exists
+kubectl exec [pod-name] -- curl -s http://podIP
+     
+</code></pre>
+</li>
+</ul>
+<h4><a class="header" href="#storage" id="storage">Storage</a></h4>
+<p><img src="./images/Storage.png" alt="Storage" /></p>
+<h3><a class="header" href="#volumes" id="volumes">Volumes</a></h3>
+<ul>
+<li>A volume references a storage location</li>
+<li>Must have a unique name</li>
+<li>Attached to a Pod and may or may not be tied to the Pod's lifetime(depending on the volume type)</li>
+<li>A volume mount reference a Volume by name and defines a mountPath</li>
+</ul>
+<h4><a class="header" href="#volume-types" id="volume-types">Volume Types</a></h4>
+<ol>
+<li>
+<p><strong>EmptyDir</strong> - Empty directory for storing &quot;transient&quot; data (shares a Pod's lifetime) useful for sharing files between containers ruinning in a Pod.</p>
+<pre><code class="language-yml">apiVersion: v1
+kind: Pod
+spec:
+ volumes:
+   - name: html
+     emptyDir: {}
+  containers:
+  - name: ngnix
+    image: ngnix:alpine
+    volumeMounts:
+     - name: html
+       mountPath: /usr/share/ngnix/html
+       readonly: true
+  - name: html-update
+    image: alpine
+    command: [&quot;/bin/sh&quot;, &quot;-c&quot;]
+    args:
+     - while true; do date &gt;&gt; /html/index.html;
+        sleep 10; done
+    volumeMounts:
+     - name: html
+       mountPath: /html
+</code></pre>
+</li>
+<li>
+<p><strong>hostPath</strong> - Pod mounts into the node's filesystem</p>
+<pre><code class="language-yml">apiVersion: v1
+kind: Pod
+spec:
+ volumes:
+   - name: docker-socket
+     hostPath:
+      path: /var/run/docker.sock
+      type: Socket
+  containers:
+  - name: docker
+    image: docker
+    command: [&quot;sleep&quot;]
+    args: [&quot;10000&quot;]
+    volumeMounts:
+     - name: docker-socket
+       mountPath: /var/run/docker.sock
+</code></pre>
+</li>
+<li>
+<p><strong>nfs</strong> - An NFS (Network File System) share mounted into the Pod</p>
+</li>
+<li>
+<p><strong>configMap/secret</strong> - Special types of volumes that provide a Pod with access to Kubernetes resources</p>
+</li>
+<li>
+<p><strong>persistentVolumeClaim</strong> - Provide pods with a more persistent storage option that is abstracted from the details</p>
+</li>
+<li>
+<p><strong>Cloud</strong> - CLuster-wide storage</p>
+<ul>
+<li>
+<p>Azure - Azure Disk and Azure File</p>
+<pre><code class="language-yml">apiVersion: v1
+kind: Pod
+spec:
+ volumes:
+   - name: data
+     azureFile:
+      secretnName: &lt;azure-secret&gt;
+      shareName: &lt;share-name&gt;
+      readOnly: false
+  containers:
+  - name: my-app
+    image: someimage
+    volumeMounts:
+     - name: data
+       mountPath: /data/storage
+</code></pre>
+</li>
+<li>
+<p>AWS - Elastic Block Store</p>
+<pre><code class="language-yml">apiVersion: v1
+kind: Pod
+spec:
+ volumes:
+   - name: data
+     awsElasticBlockStore:
+      volumeID: &lt;volume_ID&gt;
+      fsType: ext4
+  containers:
+  - name: my-app
+    image: someimage
+    volumeMounts:
+     - name: data
+       mountPath: /data/storage
+</code></pre>
+</li>
+<li>
+<p>GCP - GCE Persistent Disk</p>
+<pre><code class="language-yml">apiVersion: v1
+kind: Pod
+spec:
+ volumes:
+   - name: data
+     gcePersistentDisk:
+      pdName: datastorage
+      fsType: ext4
+  containers:
+  - name: my-app
+    image: someimage
+    volumeMounts:
+     - name: data
+       mountPath: /data/storage
+</code></pre>
+</li>
+</ul>
+</li>
+</ol>
+<p>Viewing a Pod's Volumes</p>
+<pre><code class="language-cmd"># Describe Pod
+kubectl describe pod [pod-name]
+
+# Get Pod YAML
+kubectl get pod [pod-name] -o yaml
+</code></pre>
+<h4><a class="header" href="#persistentvaolume-pv-" id="persistentvaolume-pv-">PersistentVaolume( PV )</a></h4>
+<p>Is a cluster-wide storage unit provisioned by an administrator with a lifecycle independent from a Pod.</p>
+<p>A PersistentVolumeClaim (PVC) is a request for a storage unti(PV)</p>
+<p><img src="./images/pvc.png" alt="pvc" /></p>
+<p><img src="./images/pv-workflow.png" alt="pv-workflow" /></p>
+<p><a href="https://github.com/kubernetes/examples"> PV examples </a></p>
+<p>Defining a Persistent Volume for Azure</p>
+<pre><code class="language-yml">apiVersion: v1
+kind: PersistentVolume
+metadata:
+ name: my-pv
+spec:
+ capacity: 10Gi
+ accessModes:
+  - ReadWriteOnce
+  - ReadOnlyMany
+ persistentVolumeRelaimPolicy: Retain
+ azureFile:
+  secretName: &lt;azure-secret&gt;
+  shareName: &lt;name_from_azure&gt;
+  readOnly: false
+</code></pre>
+<p>Defining a PersistentVolumeClaim</p>
+<pre><code class="language-yml">apiVersion: v1
+kind: PersistentVolume
+metadata:
+ name: pv-dd-account-hdd-5g
+ annotations:
+  volume.beta.kubernetes.io/storage-class: accounthdd
+spec:
+ accessModes:
+ - ReadWriteOnce
+ resources:
+  requests:
+   storag: 5Gi
+</code></pre>
+<p>Using a PersistentVolumeClaim</p>
+<pre><code class="language-yml">apiVersion: v1
+kind: Pod
+metadata:
+ name: pod-uses-account-hdd-5g
+ labels:
+  name: storage
+spec:
+ containers:
+ - image: nginx
+   name: az-c-01
+   command:
+   - /bin/sh
+   - -c
+   - while true; do ech0 $(date) &gt;&gt;
+     /mnt/blobdisk/outfile; sleep 1; done
+   volumeMounts:
+   - name: blobdisk01
+     mountPath: /mnt/blobdisk
+ volumes:
+ - name: blobdisk01
+   persistentVolumeClaim:
+    claimName: pv-dd-account-hdd-5g
+</code></pre>
+<h4><a class="header" href="#storageclass" id="storageclass">StorageClass</a></h4>
+<p>A StorageClass (SC) is a type of storgae template that can be used to dynamically provision storage.</p>
+<p><img src="./images/StorageClass.png" alt="StorageClass" /></p>
+<p>Defining a Local Storage StorageClass</p>
+<pre><code class="language-yml">apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+ name: local-storage
+reclaimPolicy: Retain
+provisioner: kubernetes.io/no-provisioner
+volumeBindingMode: WaitForFirstConsumer
+</code></pre>
+<p>Defining a Local Storage PersistentVolume</p>
+<pre><code class="language-yml">apiVersion: v1
+kind: PersistentVolume
+metadata:
+ name: my-pv
+spec:
+ capacity:
+  storage: 10Gi
+ volumeMode: Block
+ accessModes:
+ - ReadWriteOnce
+ storgaeClassname: local-storage
+ local:
+  path: /data/storage
+ nodeAffinity:
+  required:
+   nodeSelectorTerms:
+   - matchExpressions:
+     - key: kubernetes.io/hostname
+       operator: In
+       values:
+       - &lt;node-name&gt;
+</code></pre>
+<p>Defining a PersistentVolumeClaim</p>
+<pre><code class="language-yml">apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+ name: my-pvc
+spec:
+ accessModes:
+ - ReadWriteOnce
+ storageClassName: local-storage
+ resources:
+  requests:
+   storage: 1Gi
+</code></pre>
+<p>Using a PersistentVolumeClaim</p>
+<pre><code>apiVersion: apps/v1
+kind: [Pod | StatefulSet | Deployment]
+...
+ spec:
+  volumes:
+  - name: my-volume
+    persistentVolumeClaim:
+     claimName: my-pvc
+</code></pre>
+<h2><a class="header" href="#mocktailbird--" id="mocktailbird--">mocktail.bird (🍹 🐦)</a></h2>
+<h4><a class="header" href="#overview" id="overview">Overview:</a></h4>
+<p>An Open source Mock application for http REST services and JSON stuff. Helps to create mock server for mocking all the api. Mocktail bird has in-build support of HTTP/2, cache, Authentication, Swagger, JSON validation and Formatting at one place. Easy to setup on any machine in 5 steps with docker.</p>
+<h5><a class="header" href="#features" id="features">Features:</a></h5>
+<p>JSON Validation (client side approach)</p>
+<p>JSON Formatter (client side approach)</p>
+<p>Mocking rest services (with random url or custom urls)</p>
+<p>Time delay for the api response time (?delay=1000, is milliseconds )</p>
+<p>File system or database management</p>
+<p>User url grouping</p>
+<p>User authentication</p>
+<p>Cache implementation</p>
+<p>swagger UI for API management (http://localhost:9080/swagger-ui.html#/)</p>
+<p>HTTP/2 Support</p>
+<p>Docker implementation</p>
+<p>Good to Have:
+Staring/stopping services</p>
+<h4><a class="header" href="#starting-application-in-2-steps" id="starting-application-in-2-steps">Starting Application in 2 steps:</a></h4>
+<p>Install docker on your machine</p>
+<p>run <code>docker-compose up</code> to start applications</p>
+<p>run <code>docker-compose down</code> to stop applications.</p>
+<p>You are all set to use mocktailbird. :)</p>
+<h4><a class="header" href="#if-need-more-detail-setup" id="if-need-more-detail-setup">If need more detail setup</a></h4>
+<p><a href="./mocktailbird/Mongodb.html">Mongodb container setup manually</a></p>
+<p><a href="./mocktailbird/SettingUpMocktailBird.html">Mocktailbird container setup manually</a></p>
+<p><a href="./mocktailbird/MocktailBird-docker-cmd.html">Mocktailbird docker cmd</a></p>
+<h1><a class="header" href="#mongodb-learning" id="mongodb-learning">MongoDB Learning</a></h1>
+<ul>
+<li>
+<p>Step-1:
+Need to Install MongoDB manually or run the mongo docker container using</p>
+</li>
+<li>
+<p>Step-2:
+start mongodb
+<code>mongod</code></p>
+</li>
+<li>
+<p>Step-3: connect to mongo terminal</p>
+<pre><code class="language-cmd">mongo  --port 27017 -u &quot;adam&quot;
+-p &quot;adamjohn&quot;
+--authenticationDatabase &quot;admin&quot;
+</code></pre>
+</li>
+<li>
+<p>Step-4: use db
+<code>use mocktail</code></p>
+</li>
+<li>
+<p>Step-5: Create user</p>
+<pre><code class="language-js"> use admin;
+ db.getUsers();
+ db.createUser(
+   {
+     user: &quot;adam&quot;,
+     pwd: &quot;adamjohn&quot;,
+     roles: [ { role: &quot;readWrite&quot;, db: &quot;mocktail&quot; },
+              { role: &quot;read&quot;, db: &quot;reporting&quot; } ]
+   }
+ );
+ db.auth(&quot;adam&quot;,&quot;adamjohn&quot;);
+</code></pre>
+</li>
+<li>
+<p>Step-5: Insert record</p>
+<pre><code>db.mock.insert({&quot;body&quot;:{&quot;s&quot;:&quot;ddd&quot;}})
+</code></pre>
+</li>
+<li>
+<p>Step-6: Set expaireAt index for mock collection.</p>
+<pre><code> db.mock.createIndex( { &quot;expireAt&quot;: 1 }, { expireAfterSeconds: 0 } )
+</code></pre>
+</li>
+<li>
+<p>Step-7:Document formatting</p>
+<pre><code>   db.mock.insert(
+   {&quot;body&quot;:&quot;dsaffsd&quot;,
+   &quot;status_code&quot;:&quot;200 OK&quot;,
+   &quot;content_type&quot;:&quot;application/json&quot;,
+   &quot;encoding&quot;:&quot;UTF-8&quot;,
+   &quot;createdTime&quot;: new Date(),
+   &quot;modifiedTime&quot;:new Date(),
+   &quot;custom_headers&quot;:[&quot;key&quot;:&quot;value&quot;]
+   })
+</code></pre>
+</li>
+<li>
+<p>Model: To remove  expire data in 1min</p>
+<pre><code>var now = new Date();
+var expi = new Date(now.getDate()+1*60000)
+db.mock.insert({
+&quot;expireAt&quot; : expi,
+  &quot;body&quot; : &quot;{\&quot;dr\&quot;:\&quot;dfdfdf\&quot;}&quot;,
+  &quot;status_code&quot; : &quot;200 OK&quot;,
+  &quot;content_type&quot; : &quot;application/json&quot;,
+  &quot;encoding&quot; : &quot;UTF-8&quot;,
+  &quot;createdTime&quot; : now,
+  &quot;modifiedTime&quot; : now,
+  &quot;custom_headers&quot; : {
+  	&quot;key&quot; : &quot;value&quot;,
+  &quot;key2&quot; : &quot;value2&quot;,
+  }
+ })
+</code></pre>
+</li>
+<li>
+<p>Data to expire after 5 day</p>
+<pre><code>var now = new Date();
+var expi = now;
+expi.setDate(expi.getDate()+5);
+db.mock.insert({
+&quot;expireAt&quot; : expi,
+ &quot;body&quot; : &quot;{\&quot;dr\&quot;:\&quot;dfdfdf\&quot;}&quot;,
+ &quot;status_code&quot; : &quot;200 OK&quot;,
+ &quot;content_type&quot; : &quot;application/json&quot;,
+ &quot;encoding&quot; : &quot;UTF-8&quot;,
+ &quot;createdTime&quot; : now,
+ &quot;modifiedTime&quot; : now,
+ &quot;custom_headers&quot; : {
+ 	&quot;key&quot; : &quot;value&quot;,
+ &quot;key2&quot; : &quot;value2&quot;,
+ }
+})
+</code></pre>
+</li>
+</ul>
+<h1><a class="header" href="#-bird-setup" id="-bird-setup">🍹 :bird: setup</a></h1>
+<p>Docker hub repository for <a href="https://cloud.docker.com/repository/docker/mocktailbird/mocktail-bird">mocktailbird</a> 🍹 :bird:</p>
+<h5><a class="header" href="#-tag-information" id="-tag-information">🏖️ Tag Information:</a></h5>
+<p>​	<b>qa</b> : base tag for users to deploy mocktail bird on any machine with latest master.</p>
+<p>​	<b>1.0.0</b> : Stable base release for production( Still underdevelopment)</p>
+<h5><a class="header" href="#factory-set-up" id="factory-set-up">:factory: Set Up:</a></h5>
+<ol start="0">
+<li>
+<p><a href="https://docs.docker.com/docker-for-mac/install/">Install Docker</a></p>
+</li>
+<li>
+<p>:two_men_holding_hands: ​Creating docker network bridge</p>
+<p><code> docker network create -d bridge mongodb</code></p>
+<p>✔️ check if all is well:</p>
+<p>​	<code>docker network ls</code></p>
+</li>
+<li>
+<p>:minidisc: Mongodb container setup</p>
+<pre><code class="language-cmd">docker run -it -p 27017:27017 --network=mongodb --mount source=mock,destination=/data/db/ --name mocktail-bird-mongo mongo:3.6.11-stretch
+</code></pre>
+<p>​	<i>* network mongodb should be the one given as from the step 1 creating docker network driver.</i></p>
+<p>​	<i>* name mocktail-bird-mongo is the name of mongodb container.</i></p>
+</li>
+<li>
+<p>:closed_lock_with_key: ​DB Authentication.</p>
+<p><code> docker exec -it mocktail-bird-mongo /bin/bash</code></p>
+<p>the above command opens the conatiner folder and run <code>mongo</code> command. That will make you enter to mongodb console. enter below command to create a user to access the <b>mocktail</b> db</p>
+<pre><code class="language-mongojs">// enter into admin db
+use admin;
+db.getUsers();
+//create admin user to create new user and roles
+db.createUser({
+    user: &quot;mockbird&quot;,
+    pwd: &quot;Ilovethisbird&quot;,
+    roles: [ { role: &quot;readWrite&quot;, db: &quot;admin&quot; },
+    				{ role: &quot;read&quot;, db: &quot;reporting&quot; } ]}
+);
+//create user to read, write record to moctail db
+db.createUser({
+    user: &quot;adam&quot;,
+    pwd: &quot;adamjohn&quot;,
+    roles: [ { role: &quot;readWrite&quot;, db: &quot;mocktail&quot; },
+             { role: &quot;read&quot;, db: &quot;reporting&quot; } ]
+  }
+);
+//Authenticat the user
+db.auth(&quot;adam&quot;,&quot;adamjohn&quot;)
+</code></pre>
+<p>✔️ check if mongodb conatiner created:</p>
+<p>​	 <code>docker ps -a</code></p>
+<p>​	<i>* If this container is restarted all the data is lost and all the steps 2,3 needs to be done again. Will be implementing —volume of docker container soon to avoid data loss.</i></p>
+</li>
+<li>
+<p>💸 Starting mocktail-bird application container</p>
+<pre><code class="language-cmd">  docker run -it -p 9080:9080 --network=mongodb --name mockatail-bird-qa mocktailbird/mocktail-bird:qa
+</code></pre>
+<p><i>	* network connects db and this application container.</i>
+<i> * name of this conatiner is mockatail-bird-qa.</i>
+<i>	* mocktailbird/mocktail-bird:qa  is the docker hub image for conatiner creation</i></p>
+</li>
+<li>
+<p>✔️ Check application running.</p>
+<blockquote>
+<p>http://localhost:9080/swagger-ui.html</p>
+</blockquote>
+<p>create a mock url using createmock api.</p>
+</li>
+<li>
+<p>:dancer: Have  🍹 :bird:  app to mock all your apis in few mins.</p>
+</li>
+</ol>
+<h2><a class="header" href="#mocktailbird-docket-setup-for-developer" id="mocktailbird-docket-setup-for-developer">Mocktail.Bird docket setup for developer</a></h2>
+<h4><a class="header" href="#start-mongodb-instance-on-local" id="start-mongodb-instance-on-local">Start MongoDb Instance on local</a></h4>
+<pre><code class="language-cmd">docker run -p 27017:27017 --name mocktail-bird-mongo -d mongo:3.6.11-stretch
+</code></pre>
+<h4><a class="header" href="#image-generation-from-dockerfile" id="image-generation-from-dockerfile">Image generation from dockerfile</a></h4>
+<pre><code class="language-cmd">docker build -t mocktail-bird-dev -f mocktailbird-dev-JDK11.Dockerfile .
+
+</code></pre>
+<h4><a class="header" href="#logging-into-image-created" id="logging-into-image-created">Logging into image created</a></h4>
+<pre><code class="language-cmd">docker run -it mocktail-bird-dev /bin/bash
+</code></pre>
+<h4><a class="header" href="#contianer-creation-from-images" id="contianer-creation-from-images">Contianer creation from images</a></h4>
+<pre><code class="language-cmd">docker run -it --name mockatail.bird-dev mocktail-bird-dev
+</code></pre>
+<h4><a class="header" href="#logging-into-container-created" id="logging-into-container-created">Logging into Container created</a></h4>
+<pre><code class="language-cmd">docker exec -it mockatail.bird-dev /bin/bash
+</code></pre>
+<h4><a class="header" href="#local-setup" id="local-setup">Local setup</a></h4>
+<pre><code class="language-cmd">docker build -t local-dev -f Local-dev.Dockerfile .
+
+docker run -p 27017:27017 --name mocktail-bird-mongo -d mongo:3.6.11-stretch
+
+docker run -it -p 9080:9080 --network=mocktail-bird-mongo --name mockatail.bird-dev  local-dev
+
+docker run -it -p 9080:9080 --network=mocktailbird_net-app-mongo --name mockatail.bird-dev mocktail-bird-dev
+
+docker network create -d bridge mongodb
+
+
+docker run -it -p 27017:27017 --network=mongodb \
+    --mount source=mocktailvol1,target=/data/db  \
+    --name mocktail-bird-mongo mongo:3.6.11-stretch
+
+docker build -t local-dev -f Local-dev.Dockerfile .
+
+docker run -it --network=mongodb -p 9080:9080 --name mockatail.bird-local-dev local-dev
+
+docker run -it --network=mongodb -p 9080:9080 --name mockatail-bird-qa mocktail-bird:qa
+
+
+docker build -t mocktail-bird -f mocktailbird-dev-JDK11.Dockerfile .
+</code></pre>
+<p>##Data Structures</p>
+<ul>
+<li>
+<p>set : {} (no duplicated and not ordered)</p>
+</li>
+<li>
+<p>list : [] (mutable)</p>
+</li>
+<li>
+<p>tuples : (1,'did', 1.5) (can have any datatype)</p>
+</li>
+<li>
+<p>Dictionaries:  {key:value} key should be immutable </p>
+<ul>
+<li>key, value can be retrieved using items()</li>
+</ul>
+</li>
+<li>
+<p>deque([]) FIFO</p>
+</li>
+<li></li>
+</ul>
+<h2><a class="header" href="#important-functions" id="important-functions">Important Functions</a></h2>
+<p>Zip() : looping throught two or more sequences at same time</p>
+<h2><a class="header" href="#books" id="books">Books</a></h2>
+<h4><a class="header" href="#the-four-agreements" id="the-four-agreements">The four Agreements</a></h4>
+<ul>
+<li>Agreement 1: Be Impeccable With Your Word</li>
+<li>Agreement 2: Don't Take Anything Personally</li>
+<li>Agreement 3: Don't Make Assumptions</li>
+<li>Agreement 4: Always Do Your Best</li>
+</ul>
+<blockquote>
+<p>Today I will be impeccable with my word, I will not take anything personally, I will not make any assumptions, and i am going to do my best.</p>
+</blockquote>
+<h4><a class="header" href="#12-rules-for-life" id="12-rules-for-life">12 Rules for Life</a></h4>
+<ul>
+<li>Stand up straight with your shoulders back</li>
+<li>Treat yourself like someone you are responsible for helping</li>
+<li>Make friends with people who want the best for you</li>
+<li>Compare yourself to who you were yesterday, not to who someone else is today</li>
+<li>Do not let your children do anything that makes you dislike them</li>
+<li>Set your house in perfect order before you criticize the world</li>
+<li>Pursue what is meaningful (not what is expedient)</li>
+<li>Tell the truth – or, at least, don't lie</li>
+<li>Assume that the person you are listening to might know something you don't</li>
+<li>Be precise in your speech</li>
+<li>Do not bother children when they are skateboarding</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+        
+        <script type="text/javascript">
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+        
+        
+
+    </body>
+</html>
