@@ -1,0 +1,6 @@
+[book]
+authors = ["Ravi Sankar Karuturi"]
+language = "en"
+multilingual = false
+src = "src"
+title = "MyBook MyWords"
