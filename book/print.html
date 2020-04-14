@@ -80,7 +80,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li><a href="Nvim_cheats.html"><strong aria-hidden="true">1.</strong> NeoVim Editor Cheats</a></li><li><a href="Bash-commands-daytoday.html"><strong aria-hidden="true">2.</strong> Bash cmd</a></li><li><a href="ALGO.html"><strong aria-hidden="true">3.</strong> Algorithms Learning</a></li><li><a href="curl-cheats.html"><strong aria-hidden="true">4.</strong> Curl</a></li><li><a href="Rust-learning.html"><strong aria-hidden="true">5.</strong> Rust Learning</a></li><li><a href="Docker-Learning.html"><strong aria-hidden="true">6.</strong> Docker Cheats</a></li><li><a href="Kubernetes.html"><strong aria-hidden="true">7.</strong> Kubernetes</a></li><li><a href="mocktailbird.html"><strong aria-hidden="true">8.</strong> Mocktailbird</a></li><li><ol class="section"><li><a href="mocktailbird/Mongodb.html"><strong aria-hidden="true">8.1.</strong> Mongodb container setup</a></li><li><a href="mocktailbird/SettingUpMocktailBird.html"><strong aria-hidden="true">8.2.</strong> Mocktailbird container setup</a></li><li><a href="mocktailbird/MocktailBird-docker-cmd.html"><strong aria-hidden="true">8.3.</strong> Mocktailbird docker cmd</a></li></ol></li><li><a href="Python-learning.html"><strong aria-hidden="true">9.</strong> Python</a></li><li><a href="ReadBooks-cheats.html"><strong aria-hidden="true">10.</strong> Personal</a></li></ol>
+                <ol class="chapter"><li><a href="Nvim_cheats.html"><strong aria-hidden="true">1.</strong> NeoVim Editor Cheats</a></li><li><a href="Bash-commands-daytoday.html"><strong aria-hidden="true">2.</strong> Bash cmd</a></li><li><a href="ALGO.html"><strong aria-hidden="true">3.</strong> Algorithms Learning</a></li><li><a href="curl-cheats.html"><strong aria-hidden="true">4.</strong> Curl</a></li><li><a href="Rust-learning.html"><strong aria-hidden="true">5.</strong> Rust Learning</a></li><li><a href="Docker-Learning.html"><strong aria-hidden="true">6.</strong> Docker Cheats</a></li><li><a href="Kubernetes.html"><strong aria-hidden="true">7.</strong> Kubernetes</a></li><li><a href="mocktailbird.html"><strong aria-hidden="true">8.</strong> Mocktailbird</a></li><li><ol class="section"><li><a href="mocktailbird/Mongodb.html"><strong aria-hidden="true">8.1.</strong> Mongodb container setup</a></li><li><a href="mocktailbird/SettingUpMocktailBird.html"><strong aria-hidden="true">8.2.</strong> Mocktailbird container setup</a></li><li><a href="mocktailbird/MocktailBird-docker-cmd.html"><strong aria-hidden="true">8.3.</strong> Mocktailbird docker cmd</a></li></ol></li><li><a href="Python-learning.html"><strong aria-hidden="true">9.</strong> Python</a></li><li><a href="work.html"><strong aria-hidden="true">10.</strong> Work</a></li><li><ol class="section"><li><a href="work/customer-localsetup.html"><strong aria-hidden="true">10.1.</strong> Customer Setup</a></li><li><a href="work/SparkJobs.html"><strong aria-hidden="true">10.2.</strong> Spark Local</a></li><li><a href="work/splunk.html"><strong aria-hidden="true">10.3.</strong> Splunk</a></li></ol></li><li><a href="ReadBooks-cheats.html"><strong aria-hidden="true">11.</strong> Personal</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -696,7 +696,7 @@ spec:
     periodSeconds: 5
     failureThreshold: 1
    ports:
-   - containerPort:9080
+   - containerPort: 9080
 </code></pre>
 <p>ExecAction - Executes an action inside the container</p>
 <p>TCPSocketAction - TCP check against the container's IP address on a specified port</p>
@@ -719,7 +719,7 @@ spec:
     initialDelaySeconds: 2
     periodSeconds: 5
    ports:
-   - containerPort:9080
+   - containerPort: 9080
 </code></pre>
 </li>
 </ol>
@@ -776,7 +776,7 @@ kubectl get deployments
 kubectl get deployment --show-labels
 
 # get all deployments with a specific label
-kubectl get deployment -l app=ngnix
+kubectl get deployment -l app=mocktailbird
 
 # Delete a Deployment
 kubectl delete deployment [deployment-name]
@@ -801,10 +801,25 @@ kubectl scale -f file.deployment.yml --replicas=5
 <h4><a class="header" href="#service-types" id="service-types">Service Types:</a></h4>
 <ul>
 <li>
-<p><strong>ClusterIP -</strong> Expose the service on a cluster-internal IP(default)</p>
+<p><strong>ClusterIP -</strong> Expose the service on a cluster-internal IP(default), Used to talk in between pods</p>
+<pre><code class="language-yml">apiVersion: v1
+kind: Service
+metadata:
+ name: mocktailbird
+ labels:
+  app: mocktailbird
+spec:
+ type: ClusterIP #default
+ selector:
+  app: mocktailbird
+ ports:
+ - name: http
+   port: 9080
+   targetPort: 9080
+</code></pre>
 </li>
 <li>
-<p><strong>NodePort -</strong> Expose the service on each Node's Ip at a static port</p>
+<p><strong>NodePort -</strong> Expose the service on each Node's Ip at a static port (starts from 30,000), Used to communicate from outside world.</p>
 <pre><code class="language-yml">  apiVersion: v1
   kind: Service
   metadata:
@@ -814,13 +829,13 @@ kubectl scale -f file.deployment.yml --replicas=5
    selector:
     app: ngnix
    ports:
-    - port:80
+    - port: 80
       targetPort: 80
-      nodePort:31000 #optional will set default
+      nodePort: 31000 #optional will set default
 </code></pre>
 </li>
 <li>
-<p><strong>LoadBalancer -</strong> Provision an external IP to act as a load balancer for the service</p>
+<p><strong>LoadBalancer -</strong> Provision an external IP to act as a load balancer for the service (make sure cluster is running to see it working)</p>
 <pre><code class="language-yml">  apiVersion: v1
   kind: Service
   metadata:
@@ -833,7 +848,9 @@ kubectl scale -f file.deployment.yml --replicas=5
     - port:80
       targetPort: 80
 </code></pre>
-<p>LoadBalancer wont work in local (with out cluster setup) use other METALLB setup for testing loadbalancer.</p>
+<blockquote>
+<p><em>Note: LoadBalancer wont work in local (with out cluster setup) use other METALLB setup for testing loadbalancer.</em></p>
+</blockquote>
 </li>
 <li>
 <p><strong>ExternalName -</strong> maps a service to a DNS name</p>
@@ -874,7 +891,7 @@ spec:
     periodSeconds: 5
     failureThreshold: 1
    ports:
-   - containerPort:9080
+   - containerPort: 9080
 </code></pre>
 <pre><code class="language-cmd"># Create a service
 kubectl create -f file.service.yml --save-congfig
@@ -904,7 +921,7 @@ kubectl exec [pod-name] -- curl -s http://podIP
 <h4><a class="header" href="#volume-types" id="volume-types">Volume Types</a></h4>
 <ol>
 <li>
-<p><strong>EmptyDir</strong> - Empty directory for storing &quot;transient&quot; data (shares a Pod's lifetime) useful for sharing files between containers ruinning in a Pod.</p>
+<p><strong>EmptyDir</strong> - Empty directory for storing &quot;transient&quot; data (shares a Pod's lifetime) useful for sharing files between containers running in a Pod.</p>
 <pre><code class="language-yml">apiVersion: v1
 kind: Pod
 spec:
@@ -959,7 +976,7 @@ spec:
 <p><strong>persistentVolumeClaim</strong> - Provide pods with a more persistent storage option that is abstracted from the details</p>
 </li>
 <li>
-<p><strong>Cloud</strong> - CLuster-wide storage</p>
+<p><strong>Cloud</strong> - Cluster-wide storage</p>
 <ul>
 <li>
 <p>Azure - Azure Disk and Azure File</p>
@@ -1026,7 +1043,7 @@ kubectl describe pod [pod-name]
 # Get Pod YAML
 kubectl get pod [pod-name] -o yaml
 </code></pre>
-<h4><a class="header" href="#persistentvaolume-pv-" id="persistentvaolume-pv-">PersistentVaolume( PV )</a></h4>
+<h4><a class="header" href="#persistentvolume-pv-" id="persistentvolume-pv-">PersistentVolume( PV )</a></h4>
 <p>Is a cluster-wide storage unit provisioned by an administrator with a lifecycle independent from a Pod.</p>
 <p>A PersistentVolumeClaim (PVC) is a request for a storage unti(PV)</p>
 <p><img src="./images/pvc.png" alt="pvc" /></p>
@@ -1144,6 +1161,100 @@ kind: [Pod | StatefulSet | Deployment]
     persistentVolumeClaim:
      claimName: my-pvc
 </code></pre>
+<h3><a class="header" href="#configmaps" id="configmaps">ConfigMaps</a></h3>
+<p>ConfigMaps provide a way to store configuration information and provide it to containers</p>
+<p>Can store entire files or provide key/value pairs:</p>
+<ul>
+<li>Store in a File. Key is the filename, value is the file contents( can be son, xml, keys/values, etc).</li>
+<li>Provide on the command-line</li>
+<li>ConfigMap manifest</li>
+</ul>
+<p>Accessing ConfigMap Data in a Pod</p>
+<ol>
+<li>
+<p>Environment variables (key/value)</p>
+</li>
+<li>
+<p>Configmap Volume (access as files)</p>
+</li>
+</ol>
+<h3><a class="header" href="#creating-configmap" id="creating-configmap">Creating ConfigMap</a></h3>
+<h4><a class="header" href="#defining-values-in-a-configmap-manifest" id="defining-values-in-a-configmap-manifest">Defining Values in a ConfigMap Manifest</a></h4>
+<pre><code class="language-yml">apiVersion: v1
+kind: ConfigMap
+metadata:
+ name: app-settings
+ labels:
+  app: app-settings
+data:
+ enemies: aliens
+ lives: &quot;3&quot;
+ enemies.cheat: &quot;true&quot;
+ enemies.cheat.level=noGoodrooten
+</code></pre>
+<pre><code class="language-cmd"># Create from a ConfigNap manifest
+kubectl create -f file.configmap.yml
+</code></pre>
+<h4><a class="header" href="#defining-keyvalue-pairs-in-a-file" id="defining-keyvalue-pairs-in-a-file">Defining key/value pairs in a file</a></h4>
+<pre><code class="language-text">#File name game-config
+enemies=aliens
+lives=3
+enemies.cheat=true
+enemies.cheat.level=noGoodRooten
+</code></pre>
+<pre><code class="language-cmd"># Create a ConfigMap using data from a file
+kubectl create configmap [cm-name] --from-file=[path-to-file]
+</code></pre>
+<p>Above command generetas a configfile as below</p>
+<pre><code class="language-yml">apiVersion: v1
+kind: ConfigMap
+data:
+ # file name of the keyvalue pay and delimter
+ game.config: |-  
+  enemies=aliens
+  lives=3
+  enemies.cheat=true
+  enemies.cheat.level=noGoodrooten
+</code></pre>
+<h4><a class="header" href="#defining-keyvalue-pairs-in-an-env-file" id="defining-keyvalue-pairs-in-an-env-file">Defining Key/Value Pairs in an Env File</a></h4>
+<pre><code class="language-text"># File name game-config.env
+enemies=aliens
+lives=3
+enemies.cheat=true
+enemies.cheat.level=noGoodRooten
+</code></pre>
+<pre><code class="language-cmd"># Create a env ConfigMap using data from a file
+kubectl create configmap [cm-name] --from-env-file=[path-to-file]
+</code></pre>
+<p>Above command generetas a configfile as below</p>
+<pre><code class="language-yml">apiVersion: v1
+kind: ConfigMap
+data:
+ # Note file name is not included here
+ enemies=aliens
+ lives=3
+ enemies.cheat=true
+ enemies.cheat.level=noGoodrooten
+</code></pre>
+<p>Recap</p>
+<pre><code class="language-cmd"># Create a Configmap Using data from a config file
+kubectl create configmap [cm-name] --from-file=[path-to-file]
+
+# Create a ConfigMap from an env file
+kubectl create configmap [cm-name] --from-env-file=[path-to-file]
+
+# Create a ConfigMap from individual data values
+kubectl create configmap [cm-name] --from-literal=apuUrl=https://my-api --from-literal=otherKey=otherValue
+
+# Cretae from a ConfigMap manifest
+kubectl create -f file.configmap.yml
+
+# Get a ConfigMap
+kubectl get cm [cm-name] -o yaml  
+</code></pre>
+<p><img src="./images/ConfigMap-LoadOneEnvVariable.png" alt="ConfigMap-LoadOneEnvVariable" /></p>
+<p><img src="./images/ConfigMap-LoadAllEnvVariables.png" alt="ConfigMap-LoadAllEnvVariables" /></p>
+<p><img src="./images/ConfigMap-Volume.png" alt="ConfigMap-Volume" /></p>
 <h2><a class="header" href="#mocktailbird--" id="mocktailbird--">mocktail.bird (🍹 🐦)</a></h2>
 <h4><a class="header" href="#overview" id="overview">Overview:</a></h4>
 <p>An Open source Mock application for http REST services and JSON stuff. Helps to create mock server for mocking all the api. Mocktail bird has in-build support of HTTP/2, cache, Authentication, Swagger, JSON validation and Formatting at one place. Easy to setup on any machine in 5 steps with docker.</p>
@@ -1407,6 +1518,131 @@ docker build -t mocktail-bird -f mocktailbird-dev-JDK11.Dockerfile .
 </ul>
 <h2><a class="header" href="#important-functions" id="important-functions">Important Functions</a></h2>
 <p>Zip() : looping throught two or more sequences at same time</p>
+<h4><a class="header" href="#work-related-stuff" id="work-related-stuff">Work Related stuff</a></h4>
+<p>Has all the local work related cheats and stuff.</p>
+<h1><a class="header" href="#customer-steup" id="customer-steup">Customer Steup</a></h1>
+<ul>
+<li>
+<p>Step 1:</p>
+<blockquote>
+<p>cd /Users/a017854/Documents/Code/CustomerDomain/CustomerDomainAPI</p>
+<p>mvn clean install -DskipTests</p>
+</blockquote>
+</li>
+<li>
+<p>Run impl</p>
+<blockquote>
+<p>cd ../CustomerDomainIMPL</p>
+<p>mvn clean install</p>
+</blockquote>
+</li>
+<li>
+<p>Run War</p>
+<blockquote>
+<p>cd ../CustomerWar</p>
+<p>mvn clean install</p>
+</blockquote>
+</li>
+<li>
+<p>copy war to jboss</p>
+<blockquote>
+<p>cp /Users/a017854/Documents/Code/CustomerDomain/CustomerWar/customer-web/target/customer.war-*.war /Users/a017854/jboss/jboss-eap-7.0.8/standalone/deployment</p>
+</blockquote>
+</li>
+<li>
+<p>Start jboss</p>
+<blockquote>
+<p>cd /Users/a017854/jboss/jboss-eap-7.0.8/bin/</p>
+<p>./standalone.sh -Dsdp.configuration.home=/Users/a017854/jboss/jboss-eap-7.0.8/standalone/configuration</p>
+</blockquote>
+</li>
+</ul>
+<h3><a class="header" href="#spark-jobs-cassandra" id="spark-jobs-cassandra">Spark Jobs cassandra</a></h3>
+<h5><a class="header" href="#setup-cassandra-dse" id="setup-cassandra-dse">Setup cassandra dse</a></h5>
+<ul>
+<li>
+<p>Download dse 6.0, update all the a017854 to your racfid</p>
+</li>
+<li>
+<p>start cassandra </p>
+<blockquote>
+<p><strong>$ cd /Users/a017854/Softwares/dse-6.0.5/bin</strong> </p>
+<p><strong>$ ./dse cassandra -k</strong></p>
+</blockquote>
+</li>
+</ul>
+<h5><a class="header" href="#setup-implict-preference-project" id="setup-implict-preference-project">Setup Implict preference project</a></h5>
+<ul>
+<li>
+<p>project repo: ImplicitPreference-PreferencesHub</p>
+<blockquote>
+<p><strong>git clone https://code.devops.fds.com/CAP/ImplicitPreference-PreferencesHub.git</strong></p>
+<p><strong>mvn clean install</strong></p>
+</blockquote>
+<ul>
+<li>jar gets generated at /users/a017854/Documents/Code/ImplicitPreference-PreferencesHub/preference.implicit.util/target/preference.implicit.util-1.0.0.jar</li>
+</ul>
+</li>
+</ul>
+<h5><a class="header" href="#setup-job-files" id="setup-job-files">Setup Job files</a></h5>
+<ul>
+<li>
+<p>create a folder /app/cassandra</p>
+</li>
+<li>
+<p>copy file Implicit.preferences.spark.properties to /app/cassandra</p>
+</li>
+<li>
+<p>update file with all local values of Cassandra </p>
+</li>
+<li>
+<p>implicit.preference.file.path=file:///apps/cassandra/
+spark.executor.memory=1g</p>
+</li>
+<li>
+<p>comment all the server properties</p>
+</li>
+<li>
+<p>update the CSV file name with current date MCOM_Implicit_Pref_Gender_06-21-2019.csv</p>
+</li>
+</ul>
+<h5><a class="header" href="#start-spark-job" id="start-spark-job">Start spark job</a></h5>
+<blockquote>
+<p><strong>$ cd /Users/a017854/Softwares/dse-6.0.5/bin</strong></p>
+<p><strong>$ ./dse -u cassandra -p cassandra spark-submit --class com.macys.marketing.msp.preferences.implicit.ImplicitGenderPreferenceProcessor  --supervise ~/Documents/Code/ImplicitPreference-PreferencesHub/preference.implicit.util/target/preference.implicit.util-1.0.0.jar</strong></p>
+</blockquote>
+<h5><a class="header" href="#check-the-status" id="check-the-status">Check the status</a></h5>
+<ul>
+<li>
+<p><a href="http://localhost:7080/">http://localhost:7080/</a></p>
+</li>
+<li>
+<p>http://10.120.87.155:7080/</p>
+</li>
+</ul>
+<h2><a class="header" href="#splunk-stuff" id="splunk-stuff">Splunk Stuff</a></h2>
+<ul>
+<li>
+<p>Query to get count of canvas and personalization calls made for every sec.</p>
+<p><code>index=*mcom_homepage_eap* sourcetype=homepage_access | eval requestType=case(like(uri,&quot;%canvas%&quot;),&quot;Canvas&quot;,like(uri,&quot;%preferences%&quot;),&quot;preferences&quot; ) | bucket _time span=1s | stats count by requestType,_time</code></p>
+</li>
+<li>
+<p>Average and Max TPS for canvas and personalization call.</p>
+<p><code>index=*mcom_homepage_eap* sourcetype=homepage_access | eval requestType=case(like(uri,&quot;%canvas%&quot;),&quot;Canvas&quot;,like(uri,&quot;%preferences%&quot;),&quot;preferences&quot; ) | bucket _time span=1s | stats count as TPS by requestType,_time | stats avg(TPS),max(TPS) by requestType</code></p>
+</li>
+<li>
+<p>Average and Max Response time </p>
+<p><code>index=*mcom_homepage_eap* sourcetype=homepage_access | eval requestType=case(like(uri,&quot;%canvas%&quot;),&quot;Canvas&quot;,like(uri,&quot;%preferences%&quot;),&quot;preferences&quot; ) |  stats avg(RespTime_ms), perc99(RespTime_ms),perc95(RespTime_ms),perc90(RespTime_ms),perc75(RespTime_ms),perc50(RespTime_ms),perc5(RespTime_ms),median(RespTime_ms),max(RespTime_ms) by requestType</code></p>
+</li>
+<li>
+<p>Total call happening on canvas/personalization call happening in 24HR</p>
+<p><code>index=*mcom_homepage_eap* sourcetype=homepage_access | eval requestType=case(like(uri,&quot;%canvas%&quot;),&quot;Canvas&quot;,like(uri,&quot;%preferences%&quot;),&quot;preferences&quot; ) | bucket _time span=24H | stats count by requestType,_time</code></p>
+</li>
+<li>
+<p>To query a string on logs with loyaltyNumber : *********4649</p>
+<p><code>index=dal_mcom_msp_loyalty loyaltyNumber|rex field=_raw &quot;loyaltyNumber(?&lt;lnumber&gt;.*?),&quot;| where like(lnumber, &quot;%4649&quot;)</code></p>
+</li>
+</ul>
 <h2><a class="header" href="#books" id="books">Books</a></h2>
 <h4><a class="header" href="#the-four-agreements" id="the-four-agreements">The four Agreements</a></h4>
 <ul>

@@ -120,7 +120,7 @@ Two Types:
        periodSeconds: 5
        failureThreshold: 1
       ports:
-      - containerPort:9080
+      - containerPort: 9080
    ```
 
    ExecAction - Executes an action inside the container
@@ -147,7 +147,7 @@ Two Types:
        initialDelaySeconds: 2
        periodSeconds: 5
       ports:
-      - containerPort:9080
+      - containerPort: 9080
    ```
 
 Failed Pod containers are recreated by default(restartPolicy defaults to Always).
@@ -218,7 +218,7 @@ kubectl get deployments
 kubectl get deployment --show-labels
 
 # get all deployments with a specific label
-kubectl get deployment -l app=ngnix
+kubectl get deployment -l app=mocktailbird
 
 # Delete a Deployment
 kubectl delete deployment [deployment-name]
@@ -247,11 +247,28 @@ Single point of entry for accessing one or more Pods
 
 #### Service Types:
 
-- **ClusterIP -** Expose the service on a cluster-internal IP(default)
+- **ClusterIP -** Expose the service on a cluster-internal IP(default), Used to talk in between pods
+
+  ```yml
+  apiVersion: v1
+  kind: Service
+  metadata:
+   name: mocktailbird
+   labels:
+    app: mocktailbird
+  spec:
+   type: ClusterIP #default
+   selector:
+    app: mocktailbird
+   ports:
+   - name: http
+     port: 9080
+     targetPort: 9080
+  ```
 
   
 
-- **NodePort -** Expose the service on each Node's Ip at a static port
+- **NodePort -** Expose the service on each Node's Ip at a static port (starts from 30,000), Used to communicate from outside world.
 
   ```yml
     apiVersion: v1
@@ -263,12 +280,12 @@ Single point of entry for accessing one or more Pods
      selector:
       app: ngnix
      ports:
-      - port:80
+      - port: 80
         targetPort: 80
-        nodePort:31000 #optional will set default
+        nodePort: 31000 #optional will set default
   ```
 
-- **LoadBalancer -** Provision an external IP to act as a load balancer for the service
+- **LoadBalancer -** Provision an external IP to act as a load balancer for the service (make sure cluster is running to see it working)
 
   ```yml
     apiVersion: v1
@@ -284,9 +301,7 @@ Single point of entry for accessing one or more Pods
         targetPort: 80
   ```
 
-  
-
-  LoadBalancer wont work in local (with out cluster setup) use other METALLB setup for testing loadbalancer.
+  > *Note: LoadBalancer wont work in local (with out cluster setup) use other METALLB setup for testing loadbalancer.*
 
 - **ExternalName -** maps a service to a DNS name
 
@@ -335,7 +350,7 @@ Single point of entry for accessing one or more Pods
       periodSeconds: 5
       failureThreshold: 1
      ports:
-     - containerPort:9080
+     - containerPort: 9080
   ```
 
   ```cmd
@@ -369,7 +384,7 @@ Single point of entry for accessing one or more Pods
 
 #### Volume Types
 
-1. **EmptyDir** - Empty directory for storing "transient" data (shares a Pod's lifetime) useful for sharing files between containers ruinning in a Pod.
+1. **EmptyDir** - Empty directory for storing "transient" data (shares a Pod's lifetime) useful for sharing files between containers running in a Pod.
 
    ```yml
    apiVersion: v1
@@ -423,7 +438,7 @@ Single point of entry for accessing one or more Pods
 
 5. **persistentVolumeClaim** - Provide pods with a more persistent storage option that is abstracted from the details
 
-6. **Cloud** - CLuster-wide storage
+6. **Cloud** - Cluster-wide storage
 
    * Azure - Azure Disk and Azure File
 
@@ -497,7 +512,7 @@ kubectl describe pod [pod-name]
 kubectl get pod [pod-name] -o yaml
 ```
 
-#### PersistentVaolume( PV )
+#### PersistentVolume( PV )
 
 Is a cluster-wide storage unit provisioned by an administrator with a lifecycle independent from a Pod.
 
@@ -645,3 +660,125 @@ kind: [Pod | StatefulSet | Deployment]
      claimName: my-pvc
 ```
 
+### ConfigMaps
+
+ConfigMaps provide a way to store configuration information and provide it to containers
+
+Can store entire files or provide key/value pairs:
+
+* Store in a File. Key is the filename, value is the file contents( can be son, xml, keys/values, etc).
+* Provide on the command-line
+* ConfigMap manifest
+
+Accessing ConfigMap Data in a Pod
+
+1) Environment variables (key/value)
+
+2) Configmap Volume (access as files)
+
+
+
+### Creating ConfigMap
+
+#### Defining Values in a ConfigMap Manifest
+
+```yml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+ name: app-settings
+ labels:
+  app: app-settings
+data:
+ enemies: aliens
+ lives: "3"
+ enemies.cheat: "true"
+ enemies.cheat.level=noGoodrooten
+```
+
+```cmd
+# Create from a ConfigNap manifest
+kubectl create -f file.configmap.yml
+```
+
+#### Defining key/value pairs in a file
+
+```text
+#File name game-config
+enemies=aliens
+lives=3
+enemies.cheat=true
+enemies.cheat.level=noGoodRooten
+```
+
+```cmd
+# Create a ConfigMap using data from a file
+kubectl create configmap [cm-name] --from-file=[path-to-file]
+```
+
+Above command generetas a configfile as below
+
+```yml
+apiVersion: v1
+kind: ConfigMap
+data:
+ # file name of the keyvalue pay and delimter
+ game.config: |-  
+  enemies=aliens
+  lives=3
+  enemies.cheat=true
+  enemies.cheat.level=noGoodrooten
+```
+
+#### Defining Key/Value Pairs in an Env File
+
+```text
+# File name game-config.env
+enemies=aliens
+lives=3
+enemies.cheat=true
+enemies.cheat.level=noGoodRooten
+```
+
+```cmd
+# Create a env ConfigMap using data from a file
+kubectl create configmap [cm-name] --from-env-file=[path-to-file]
+```
+
+Above command generetas a configfile as below
+
+```yml
+apiVersion: v1
+kind: ConfigMap
+data:
+ # Note file name is not included here
+ enemies=aliens
+ lives=3
+ enemies.cheat=true
+ enemies.cheat.level=noGoodrooten
+```
+
+Recap
+
+```cmd
+# Create a Configmap Using data from a config file
+kubectl create configmap [cm-name] --from-file=[path-to-file]
+
+# Create a ConfigMap from an env file
+kubectl create configmap [cm-name] --from-env-file=[path-to-file]
+
+# Create a ConfigMap from individual data values
+kubectl create configmap [cm-name] --from-literal=apuUrl=https://my-api --from-literal=otherKey=otherValue
+
+# Cretae from a ConfigMap manifest
+kubectl create -f file.configmap.yml
+
+# Get a ConfigMap
+kubectl get cm [cm-name] -o yaml  
+```
+
+![ConfigMap-LoadOneEnvVariable](./images/ConfigMap-LoadOneEnvVariable.png)
+
+![ConfigMap-LoadAllEnvVariables](./images/ConfigMap-LoadAllEnvVariables.png)
+
+![ConfigMap-Volume](./images/ConfigMap-Volume.png)
