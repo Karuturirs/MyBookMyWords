@@ -12,8 +12,4 @@
    - [Mocktailbird container setup](./mocktailbird/SettingUpMocktailBird.md)
    - [Mocktailbird docker cmd](./mocktailbird/MocktailBird-docker-cmd.md)
 - [Python](./Python-learning.md)
-- [Work](./work.md)
-   - [Customer Setup](./work/customer-localsetup.md)
-   - [Spark Local](./work/SparkJobs.md)
-   - [Splunk](./work/splunk.md)
 - [Personal](./ReadBooks-cheats.md)
