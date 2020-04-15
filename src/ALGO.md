@@ -20,7 +20,8 @@
 
   > observe that if the sequence A is sorted, we can check the midpoint of the sequence against  and eliminate half of the sequence from further consideration. The binary search algorithm repeats this procedure, halving the size of the remaining portion of the sequence each time. Write pseudocode, either iterative or recursive, for binary search. Argue that the worst-case running time of binary search is $log n$
 
-
+* Before you use 2 for loops or while loops going over the entire string or array, see if you can solve it using 2 pointers or using an additional array that could make the space complexity as O(n)
+* Other techniques are, you could try to see if you can use, hashmap, hashtable, stack, priority queues or any other data structure that you could think of, to reduce the O(n^2) to O(n) and increase the space complexity instead of time
 
 
 
