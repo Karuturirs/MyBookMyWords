@@ -782,3 +782,86 @@ kubectl get cm [cm-name] -o yaml
 ![ConfigMap-LoadAllEnvVariables](./images/ConfigMap-LoadAllEnvVariables.png)
 
 ![ConfigMap-Volume](./images/ConfigMap-Volume.png)
+
+### Secret
+
+A secret is am object that contains a small amount of sensitive data such as a password, a token, or a key.
+
+![Secret concepts](./images/Secret concepts.png)
+
+![Secret-bestPractices](./images/Secret-bestPractices.png)
+
+#### Create a Secret
+
+```cmd
+# Create a secret and store securely in kubernetes
+kubectl create secret generic my-secret --from-literal=pwd=my-password
+
+# Create a secret from a file
+kubectl create secret generic my-secret --from-file=ssh-privatekey=~/.ssh/id_rsa --from-file=ssh-publickey=~/.ssh/id_rsa.pub
+
+# Create a secret from a key pair
+kubectl create secret tls tls-secret --cert=path/to/tls.cert --key=path/to/tls.key
+```
+
+**Question** : Can I declaratively define secrets using YAML?
+
+**Answer** : Yes -but any secret data is only base64 encoded in the manifest file! 
+
+#### Defining a Secret in YAML
+
+```yml
+apiVersion: v1
+kind: Secret
+metadata:
+ name: db-passwords
+type: Opaque
+data:
+ app-password: cGFzc3dvc=
+ admin-password: dmVyeeduu8ifisHDHJK=
+```
+
+```cmd
+# Get Secrets
+kubectl get secrets
+
+# Get YAML for specific secret
+kubectl get secrest db-passwords -o yaml
+```
+
+![Secrets-EnvVariable](./images/Secrets-EnvVariable.png)
+
+![Secrets-Volumes](./images/Secrets-Volumes.png)
+
+### Troubleshooting
+
+```cmd
+# View the logs for a Pod's container
+kubectl logs [pods-name]
+
+# View the logs for a specific container within a Pod
+kubctl logs [pod-name] -c [container-name]
+
+# View the logs for a previously running pod
+kubectl logs -p [pod-name]
+
+# Stream a Pod's logs
+kubectl logs -f [pod-name]
+
+```
+
+```cmd
+# Describe a Pod
+kubectl describe pod [pod-name]
+
+# Change a Pod's output format
+kubectl get pod [pod-name] -o yaml
+
+# Change a Deploment's output format
+kubectl get deployment [deployment-name] -o yaml
+
+# Shell into a Pod container
+kubectl exec [pod-name] -it sh
+
+```
+
