@@ -28,38 +28,39 @@
      2. To delete from the cursor to the end of a line type:   `d$`
      3. To delete a whole line type:                           `dd`
      4. To repeat a motion prepend it with a number:           `2w`
-     5. The format for a change command is:
-                   operator   [number]   motion
+        5. To delete all lines in the file. `:1,$d`
+        6. The format for a change command is:
+          operator   [number]   motion
         where:
            operator -   is what to do, such as d for delete
            [number] -   is an optional count to repeat the motion
            motion   -   moves over the text to operate on, such as:
                             w (word),
                             $ (to the end of line), etc.
-     6. To move to the start of the line use a zero: 0
-     7. To undo previous actions, type:            `u`  (lowercase u)
+        7. To move to the start of the line use a zero: 0
+        8. To undo previous actions, type:            `u`  (lowercase u)
         To undo all the changes on a line, type:   `U`  (capital U)
-        To undo the undo's, type:                  `<C-r>`
-
-  #####   Lesson 3 SUMMARY
-
+      To undo the undo's, type:                  `<C-r>`
+  
+#####   Lesson 3 SUMMARY
+  
      1. To put back text that has just been deleted, type p. This puts the
         deleted text AFTER the cursor (if a line was deleted it will go on the
-        line below the cursor).
-
+      line below the cursor).
+  
      2. To replace the character under the cursor, type r and then the
-        character you want to have there.
-
+      character you want to have there.
+  
      3. The change operator allows you to change from the cursor to where
         the motion takes you. Type `ce` to change from the cursor to the
-        end of the word, `c$` to change to the end of a line.
-
-     4. The format for change is:
-
-         c   [number]   motion
-
-  #####   Lesson 4 SUMMARY
-
+      end of the word, `c$` to change to the end of a line.
+  
+   4. The format for change is:
+  
+       c   [number]   motion
+  
+#####   Lesson 4 SUMMARY
+  
      1. `<C-g>`     displays your location and the file status.
         `G`         moves to the end of the file.
          number `G` moves to that line number.
@@ -76,72 +77,72 @@
     ~~~ cmd
   					:s/old/new
     ~~~
-   To substitute new for all 'old's on a line type
-
+ To substitute new for all 'old's on a line type
+  
     ~~~ cmd
             :s/old/new/g
     ~~~
-   To substitute phrases between two line #'s type
-
+ To substitute phrases between two line #'s type
+  
     ~~~ cmd
             :#,#s/old/new/g
     ~~~
-  To substitute all occurrences in the file type
-
+To substitute all occurrences in the file type
+  
     ~~~ cmd
             :%s/old/new/g
     ~~~
-  To ask for confirmation each time add 'c'
-
+To ask for confirmation each time add 'c'
+  
     ~~~ cmd
             :%s/old/new/gc
-    ~~~
-
+  ~~~
   
 
-  ##### Lesson 5 SUMMARY
-
-  1. `:!` command executes an external command.
-
+  
+##### Lesson 5 SUMMARY
+  
+1. `:!` command executes an external command.
+  
      Some useful examples are:
      `:!ls`              -  shows a directory listing
-     `:!rm FILENAME`     -  removes file FILENAME
-
+   `:!rm FILENAME`     -  removes file FILENAME
+  
   2. `:w FILENAME`   writes the current Vim file to disk with
-       name FILENAME.
-
+     name FILENAME.
+  
   3. `v`  motion, select all the lines thats needed,  `:w FILENAME`   saves the Visually selected lines in file
-       FILENAME.
-
+     FILENAME.
+  
   4. `:r FILENAME`  retrieves disk file FILENAME and puts it
-       below the cursor position.
-
+     below the cursor position.
+  
   5. `:r !dir  `     reads the output of the dir command and
-       puts it below the cursor position.
-
-  #####  Lesson 6 SUMMARY
-
+     puts it below the cursor position.
+  
+#####  Lesson 6 SUMMARY
+  
      1. Type `o` to open a line BELOW the cursor and start Insert mode.
-        Type `O` to open a line ABOVE the cursor.
-
+      Type `O` to open a line ABOVE the cursor.
+  
      2. Type `a` to insert text AFTER the cursor.
-        Type `A` to insert text after the end of the line.
-
-     3. The `e` command moves to the end of a word.
-
-     4. The `y` operator copies text, `p` pastes it.
-
+      Type `A` to insert text after the end of the line.
+  
+   3. The `e` command moves to the end of a word.
+  
+   4. The `y` operator copies text, `p` pastes it.
+  
      5. Typing a capital `R` enters Replace mode until `<Esc>` is
-         pressed.
-
-     6. Typing ":set xxx" sets the option "xxx". Some options are:
-
+       pressed.
+  
+   6. Typing ":set xxx" sets the option "xxx". Some options are:
+  
             'ic' 'ignorecase'   ignore upper/lower case when searching
             'is' 'incsearch'    show partial matches for a search phrase
-            'hls' 'hlsearch'    highlight all matching phrases
-
-         You can either use the long or the short option name.
-
+          'hls' 'hlsearch'    highlight all matching phrases
+  
+       You can either use the long or the short option name.
+  
      7. Prepend "no" to switch an option off:
     ~~~ cmd
             :set noic
@@ -149,40 +150,40 @@
      8. Prepend "inv" to toggle an option:
     ~~~ cmd
             :set invic
-    ~~~
-
+  ~~~
+  
   9. If you want to ignore case for just one search command, use \c
-             in the phrase:
-
-      ```/ignore\c <Enter>```
-
-  #####  Lesson 7 SUMMARY
-
+           in the phrase:
+  
+    ```/ignore\c <Enter>```
+  
+#####  Lesson 7 SUMMARY
+  
      1. Type `:help`
-        or press `<F1>` or `<Help>` to open a help window.
-
-     2. Type `:help TOPIC` to find help on TOPIC.
-
-     3. Type `<C-w><C-w>` to jump to another window
-
-     4. Type `:q` to close the help window
-
-     5. Create a vimrc startup script to keep your preferred settings.
-
+      or press `<F1>` or `<Help>` to open a help window.
+  
+   2. Type `:help TOPIC` to find help on TOPIC.
+  
+   3. Type `<C-w><C-w>` to jump to another window
+  
+   4. Type `:q` to close the help window
+  
+   5. Create a vimrc startup script to keep your preferred settings.
+  
      6. While in command mode, press `<C-d>` to see possible completions.
          Press `<Tab>` to use one completion.
          
-         
-
-  ##### CONCLUSION
-
+       
+  
+##### CONCLUSION
+  
     This was intended to give a brief overview of the Vim editor, just enough to
     allow you to use the editor fairly easily. It is far from complete as Vim has
-    many many more commands. Consult the help often.
-
+  many many more commands. Consult the help often.
+  
     There are many resources online to learn more about vim. Here's a bunch of
-    them:
-
+  them:
+  
     - Learn Vim Progressively: http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/
     - Learning Vim in 2014: http://benmccormick.org/learning-vim-in-2014/
     - Vimcasts: http://vimcasts.org/
