@@ -6,7 +6,7 @@
 
 ![Kube](./images/Kube.png)
 
-### List Docker CLI commands
+### List Kubernetes CLI commands
 
 ```cmd
 $ kubectl version
