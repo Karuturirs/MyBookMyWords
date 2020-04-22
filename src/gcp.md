@@ -169,3 +169,8 @@ Known as container orchestration
 
 * Persistent Volumes
 * Persistent Volume Claims
+
+**kubectl**
+
+
+
