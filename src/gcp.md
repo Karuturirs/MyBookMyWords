@@ -18,9 +18,13 @@
 
 8. [Identity and Access Management (IAM)](#iam)
 
-9. 
+9. [Instance Group](#instancegroup)
 
-   
+10. [Kubernetes](#Kubernetes)
+
+11. 
+
+    
 
 ## Compute Service <a name="Compute"></a> 
 
@@ -105,7 +109,7 @@ Represents a user or entity that has privileges to perform actions in GCP.
 
 * **Service Account** : Account associated with an application or instance rather than a user, can create as many as needed.
 
-   
+  
 
 ### Access Control Concepts
 
@@ -124,3 +128,44 @@ Attcahed to a resource
 
 Roles attached to identities, Policies attached to resources, Policies are hierarchy.
 
+## Instance Group <a name="instancegroup"></a>
+
+Collection of instances that are managed as a single entity
+
+2 Types
+
+* Managed instance group
+* Unmanaged instance group
+
+Cool Down period is time allowed for instances tp finish initializing
+
+Stabilization period is time autoscaler uses to calculate MIGs recommended target size
+
+Avoids thrashing, i.e. rapidly adding and removing instances
+
+## Kubernetes
+
+Managed service, Provides Kubernetes Clusters.
+
+Kubernetes runs containers on cluster of virtual or physical machines.
+
+Known as container orchestration
+
+**Features:**
+
+* Load balancing of workloads
+* Node pools to segment nodes within a cluster
+* Automatic scaling and updating
+* Autohealing
+* Stackdriver monitoring
+
+**Process Objects:**
+
+* Pods
+* Deployments
+* Services
+
+**Storage Objects**
+
+* Persistent Volumes
+* Persistent Volume Claims
