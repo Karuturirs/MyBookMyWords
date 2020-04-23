@@ -1,4 +1,4 @@
-# 		Google Assoicate Cloud Engineering
+​		Google Assoicate Cloud Engineering
 
 ### Table of Content
 
@@ -22,16 +22,25 @@
 
 10. [Kubernetes](#Kubernetes)
 
-11. 
+11. [Cloud Function](#cloudfunction)
+
+12. [What to know for Google Assoicate Cloud Engineering certification ](#knowabout)
 
     
 
 ## Compute Service <a name="Compute"></a> 
 
-* App Engine : Platform-as-service
-* Compute Engine
-* Kubernetes Engine
-* Cloud Functions
+* **App Engine :** 
+  * Platform-as-service
+  * Minimal Configuration requirements
+* **Compute Engine:**
+  * Maximum control and comnfigurability
+  * Shiedlded VMS  & Sole Tenancy
+* **Kubernetes Engine:**
+  * Managed cluster
+  * Containerized applications
+* **Cloud Functions:**
+  * Responfing to events in GCP
 
 ## Storage <a name="Storage"></a>
 
@@ -143,6 +152,10 @@ Stabilization period is time autoscaler uses to calculate MIGs recommended targe
 
 Avoids thrashing, i.e. rapidly adding and removing instances
 
+![MIG](./images/MIG.png)
+
+![UMIG](./images/UMIG.png)
+
 ## Kubernetes
 
 Managed service, Provides Kubernetes Clusters.
@@ -172,5 +185,34 @@ Known as container orchestration
 
 **kubectl**
 
+## App Engine
 
+* App Engine Standard 
+* App Engine Flexible
 
+## Cloud Function
+
+* Serverless compute service
+* Execute code in response to events based on triggers
+* Availanle for events in:
+  * Cloud storgare
+  * Cloud Pub/Sub
+  * HTTP
+  * Firebase
+  * Stackdriver Logging
+
+### Cloud Function components
+
+* Events
+* Trigger
+* Functions
+
+## What to know for Google Assoicate Cloud Engineering certification <a name="knowabout"></a>
+
+![Appengine](./images/Appengine.png)
+
+![Computeengine](./images/Computeengine.png)
+
+![Kubengine](./images/Kubengine.png)
+
+![functions](./images/functions.png)
