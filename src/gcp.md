@@ -24,7 +24,9 @@
 
 11. [Cloud Function](#cloudfunction)
 
-12. [What to know for Google Assoicate Cloud Engineering certification ](#knowabout)
+12. [What to know about compute](#knowabout)
+
+13. [What to know about Storage](#knowaboutstorage)
 
     
 
@@ -207,7 +209,7 @@ Known as container orchestration
 * Trigger
 * Functions
 
-## What to know for Google Assoicate Cloud Engineering certification <a name="knowabout"></a>
+## What to know about Compute <a name="knowabout"></a>
 
 ![Appengine](./images/Appengine.png)
 
@@ -216,3 +218,80 @@ Known as container orchestration
 ![Kubengine](./images/Kubengine.png)
 
 ![functions](./images/functions.png)
+
+
+
+## Storage in GCP
+
+* Object storage
+
+  * cloud storage
+
+* Instance storage
+
+  * Persistent Disks
+
+* Database storage
+
+  * **SQL** - CloudSQL(upto 10GB, regional level scallable), Cloud spanner(horizontally scalable, consistency and users round the old)
+  * **NoSQL** - Cloud Datastorage/Firestore(Document Nosql db), Bigtable (Wide Column Db)
+  * **Analytic** - BigQuery (Data warehousing, not transactional)
+
+  >  Buckets : Top level structure that holds file and folder.
+
+## What to know about Storage<a name="knowaboutstorage"></a>
+
+* Object vs Persistent DISK vs Managed database
+* Cloud Storage
+  *  4typees - regional, multi-regional, headline, Coldline
+  * Lifecycle policies
+  * **gsutil is for storage**
+* Persistent Disks
+  * used with VMs
+  * Persist data even when VM shuts down
+* NoSQL for flexible schema data
+  * Datastore/Firestore
+  * Bigtable
+* Relational for Structured data
+  * Cloud SQL upto 10TB
+  * CLoud Spanner for global database
+* Big Query
+  * Data warehousing
+  * **Bq command line tool**
+
+## BIG DATA
+
+**Pub/Sub** - Topic, subscription, Acknowledgement
+
+**Cloud Dataproc** - Data processing  Hadoop cluster, is a managed Hadoop and spark service
+
+**Cloud Dataflow** - Choose a template and select the process that you need to do from source to destination.
+
+**Cloud Transfer** - Its used to transfer data any source (AWS, Google,3rd party, etc) to destination only google cloud platform. 
+
+**Big Query** - It's an analytics used for data warehousing, it used sql query language but not relational database, there are two ways in order to query using **bq** or user interface
+
+## Networking in the cloud<a name="networking"></a>
+
+* Virtual Private Clouds (VPC)
+  * Private cloud
+  * Global resource
+  * VPC network
+* Cloud Router
+  * Dynamic Border gateway Portocol (BGP)
+  * GCP  to  non-Google networks
+* Virtual Private Network (VPN)
+  * Securely connect networks
+  * IPSec
+* VPC Peering
+  * Private communication links
+  * Between VPCs
+* Shared VPC
+  * Share VPC across projects
+  * Centrally managed
+* Cloud Interconnect
+  * Dedicated
+  * Partner
+* FIrewalls
+  * Control flow of traffic
+
