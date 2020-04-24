@@ -42,13 +42,13 @@
   * Platform-as-service
   * Minimal Configuration requirements
 * **Compute Engine:**
-  * Maximum control and comnfigurability
+  * Maximum control and configurability
   * Shiedlded VMS  & Sole Tenancy
 * **Kubernetes Engine:**
   * Managed cluster
   * Containerized applications
 * **Cloud Functions:**
-  * Responfing to events in GCP
+  * Responding to events in GCP
 
 ## Storage <a name="Storage"></a>
 
@@ -63,7 +63,7 @@ Storage Services:
 
 * Bigtable : Column, NOSQL DB
 * Datastore: Document, NOSQL DB
-* FIrestore: Document, NOSQL DB
+* Firestore: Document, NOSQL DB
 * SQL: Relational DB
 * Spanner: Relational DB
 * Storage: Stores any sort of data, Unstructured data
@@ -82,7 +82,7 @@ Storage Services:
 * Container Registry
 * Deployment Manager
 
-## BitData <a name="BitData"></a>
+## BigData <a name="BigData"></a>
 
 * Dataproc
 * Dataflow
@@ -139,7 +139,7 @@ Represents a user or entity that has privileges to perform actions in GCP.
 
 ### Policies
 
-Collection of statements that define whihc users have access to some resources
+Collection of statements that define which users have access to some resources
 
 Attcahed to a resource
 
@@ -154,7 +154,7 @@ Collection of instances that are managed as a single entity
 * Managed instance group
 * Unmanaged instance group
 
-Cool Down period is time allowed for instances tp finish initializing
+Cool Down period is time allowed for instances to finish initializing
 
 Stabilization period is time autoscaler uses to calculate MIGs recommended target size
 
@@ -202,7 +202,7 @@ Known as container orchestration
 
 * Serverless compute service
 * Execute code in response to events based on triggers
-* Availanle for events in:
+* Available for events in:
   * Cloud storgare
   * Cloud Pub/Sub
   * HTTP
@@ -249,7 +249,7 @@ Known as container orchestration
 
 * Object vs Persistent DISK vs Managed database
 * Cloud Storage
-  *  4typees - regional, multi-regional, headline, Coldline
+  *  4types - regional, multi-regional, headline, Coldline
   * Lifecycle policies
   * **gsutil is for storage**
 * Persistent Disks
@@ -260,7 +260,7 @@ Known as container orchestration
   * Bigtable
 * Relational for Structured data
   * Cloud SQL upto 10TB
-  * CLoud Spanner for global database
+  * Cloud Spanner for global database
 * Big Query
   * Data warehousing
   * **Bq command line tool**
@@ -269,11 +269,11 @@ Known as container orchestration
 
 **Pub/Sub** - Topic, subscription, Acknowledgement
 
-**Cloud Dataproc** - Data processing  Hadoop cluster, is a managed Hadoop and spark service
+**Cloud Dataproc** - Data processing Hadoop cluster. Is a managed Hadoop and spark service
 
 **Cloud Dataflow** - Choose a template and select the process that you need to do from source to destination.
 
-**Cloud Transfer** - Its used to transfer data any source (AWS, Google,3rd party, etc) to destination only google cloud platform. 
+**Cloud Transfer** - Its used to transfer data from any source (AWS, Google,3rd party, etc) to destination only google cloud platform. 
 
 **Big Query** - It's an analytics used for data warehousing, it used sql query language but not relational database, there are two ways in order to query using **bq** or user interface
 
