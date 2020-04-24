@@ -28,6 +28,12 @@
 
 13. [What to know about Storage](#knowaboutstorage)
 
+14. [Networking](#networking)
+
+15. [Deployment Manager](#DeploymentManager)
+
+16. [Monitoring](#monitoring)
+
     
 
 ## Compute Service <a name="Compute"></a> 
@@ -276,22 +282,82 @@ Known as container orchestration
 * Virtual Private Clouds (VPC)
   * Private cloud
   * Global resource
+  * Subnets in regions 
+  * Resources can communictae using private IP addressing
+  * Can share VPCs within organization
+  * Can peer VPCs across organizations
   * VPC network
 * Cloud Router
   * Dynamic Border gateway Portocol (BGP)
   * GCP  to  non-Google networks
 * Virtual Private Network (VPN)
   * Securely connect networks
-  * IPSec
+  * Implemented with IPSec (creating Tunnels)
+  * Links VPC networks to on-premises network
+  * Traffic routed over public internet
+  * Up to 3 Gbps
 * VPC Peering
-  * Private communication links
-  * Between VPCs
+  * Private communication links (in different organizations)
+  * Between VPCs 
+  * Low level network connection
+  * Linking networks
+  * Traffic routed using BGP
+  * Does not use GCP objects
 * Shared VPC
   * Share VPC across projects
   * Centrally managed
 * Cloud Interconnect
-  * Dedicated
-  * Partner
-* FIrewalls
+  * Google networking service
+  * Connect to Google network
+    * Directly, atleast 10Gbps, upto 100 Gbps
+    * Partner, from 50 Mbps to 10Gbps
+* Firewalls
   * Control flow of traffic
+
+![HybridNetwork](./images/HybridNetwork.png)
+
+**Load Balancer**
+
+* Global or regional
+* External or internal
+* Traffic types
+* 3 Global
+  * Http(s)
+  * SSL Proxy
+  * TCP Proxy
+* 2 Regional
+  * Internal TCP/UDP (only internal load balancing)
+  * Network TCP/UDP
+
+![GlobalLB](./images/GlobalLB.png)
+
+![RegionalLB](./images/RegionalLB.png)
+
+**Cloud DNS**
+
+**Routes**
+
+## Deployment Manager <a name="DeploymentManager"></a>
+
+Is a service that allow us to deploy pre configured applications into gcp.
+
+## Monitoring<a name="#monitoring"></a>
+
+### Stackdriver
+
+* Observability services
+* Monitor application, instances, clusters, services
+* Multiple services
+  * Monitoring : Used to monitor application about host performance metrix in realtime.
+  * Debug: Used by developer to debug
+  * Trace: Is distributed tracing tool, is used to analyze perfromance issues in distributed systems and used by developer and devops.
+  * Logging: Is the central repo where log lines are written, Strack driver logging agent  collects the log from VM instances and sends them to stackdriver instance and kept for 7days default, if want more should export them to storage.
+  * Error Reporting : counting and grouping similier errors 
+  * Profiler (APM)
+
+
+
+
+
+
 
