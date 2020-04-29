@@ -120,3 +120,4 @@ docker rm $(docker ps -a)
 ```cmd
 docker run --name cassandra-db --network some-network -d cassandra:tag
 ```
+

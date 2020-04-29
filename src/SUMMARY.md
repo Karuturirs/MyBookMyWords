@@ -8,6 +8,7 @@
 - [Docker Cheats](./Docker-Learning.md)
 - [Kubernetes](./kubernetes.md)
 - [GCP](./gcp.md)
+- [Consul Agent](./consul.md)
 - [Mocktailbird](./mocktailbird.md)
    - [Mongodb container setup](./mocktailbird/Mongodb.md)
    - [Mocktailbird container setup](./mocktailbird/SettingUpMocktailBird.md)
