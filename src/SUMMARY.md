@@ -7,6 +7,7 @@
 - [Rust Learning](./Rust-learning.md)
 - [Docker Cheats](./Docker-Learning.md)
 - [Kubernetes](./kubernetes.md)
+   - [Kubernetes Cluster local Setup](./kubernetes-cluster.md)
 - [GCP](./gcp.md)
 - [Consul Agent](./consul.md)
 - [Mocktailbird](./mocktailbird.md)
