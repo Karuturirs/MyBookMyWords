@@ -266,9 +266,11 @@ Single point of entry for accessing one or more Pods
      targetPort: 9080
   ```
 
-  
+  ![ClusterIp](./images/ClusterIp.png)
 
 - **NodePort -** Expose the service on each Node's Ip at a static port (starts from 30,000), Used to communicate from outside world.
+
+  ![NodePort](./images/NodePort.png)
 
   ```yml
     apiVersion: v1
@@ -286,6 +288,8 @@ Single point of entry for accessing one or more Pods
   ```
 
 - **LoadBalancer -** Provision an external IP to act as a load balancer for the service (make sure cluster is running to see it working)
+
+  ![LoadBalancer](./images/LoadBalancer.png)
 
   ```yml
     apiVersion: v1
