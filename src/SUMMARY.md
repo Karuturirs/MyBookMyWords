@@ -19,4 +19,5 @@
    - [Customer Setup](./work/customer-localsetup.md)
    - [Spark Local](./work/SparkJobs.md)
    - [Splunk](./work/splunk.md)
+   - [Homepage-gcp](./work/Homepage-gcp.md)
 - [Personal](./ReadBooks-cheats.md)

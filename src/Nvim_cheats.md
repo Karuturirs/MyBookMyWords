@@ -2,7 +2,7 @@
 
 * To start Neovim, run `nvim` 
 
-  ##### Lesson 1 SUMMARY
+  ##### Lesson 1 : Play with a file
 
      1. The cursor is moved using either the arrow keys or the hjkl keys.
          h (left)   j (down)       k (up)       l (right)
@@ -22,7 +22,7 @@
         `i` insert text `<Esc>`     insert before the cursor.
         `A` append text `<Esc>`     append after the line.
 
-  #####  Lesson 2 SUMMARY
+  #####  Lesson 2 : Move the cursor 
 
      1. To delete from the cursor up to the next word type:    `dw`
      2. To delete from the cursor to the end of a line type:   `d$`
@@ -41,7 +41,7 @@
         To undo all the changes on a line, type:   `U`  (capital U)
         To undo the undo's, type:                  `<C-r>`
 
-  #####   Lesson 3 SUMMARY
+  #####   Lesson 3 : Copy & Paste
 
      1. To put back text that has just been deleted, type p. This puts the
         deleted text AFTER the cursor (if a line was deleted it will go on the
@@ -58,7 +58,7 @@
 
          c   [number]   motion
 
-  #####   Lesson 4 SUMMARY
+  #####   Lesson 4 : Search and substitute
 
      1. `<C-g>`     displays your location and the file status.
         `G`         moves to the end of the file.
@@ -99,7 +99,7 @@
 
   
 
-  ##### Lesson 5 SUMMARY
+  ##### Lesson 5 : Execute Commands in vim
 
   1. `:!` command executes an external command.
 
@@ -119,7 +119,7 @@
   5. `:r !dir  `     reads the output of the dir command and
        puts it below the cursor position.
 
-  #####  Lesson 6 SUMMARY
+  #####  Lesson 6 : Different Motions
 
      1. Type `o` to open a line BELOW the cursor and start Insert mode.
         Type `O` to open a line ABOVE the cursor.

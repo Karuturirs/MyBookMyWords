@@ -69,7 +69,7 @@ kubectl create -f file.pod.yml --dry-run --validate=true
 # Will error if Pod already exists
 kubectl create -f file.pod.yml
 
-# alternate way to create or apply chnages to a POD from YAML
+# alternate way to create or apply changes to a POD from YAML
 kubectl apply -f file.pod.yml
 
 # Use --save-config when you want to use 
@@ -86,7 +86,7 @@ kubectl delete pod [name-of-pod]
 # Delete Pod using YAML file that created it
 kubectl delete -f file.pod.yml
 
-#Shows information about event on pod/image/container
+# Shows information about event on pod/image/container
 kubectl describe pod [pod-name]
 
 # Go into container of the Pod
@@ -232,7 +232,7 @@ kubectl scale -f file.deployment.yml --replicas=5
 
 ### Deployment Option
 
-Zero dewntime deployments, update an application's pods without impacting end users
+Zero downtime deployments, update an application's pods without impacting end users
 
 * Rolling updates
 * Blue-green Deployments ( AB deployments)
@@ -789,7 +789,7 @@ kubectl get cm [cm-name] -o yaml
 
 ### Secret
 
-A secret is am object that contains a small amount of sensitive data such as a password, a token, or a key.
+A secret is an object that contains a small amount of sensitive data such as a password, a token, or a key.
 
 ![Secret concepts](./images/Secret concepts.png)
 

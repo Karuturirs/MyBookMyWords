@@ -115,6 +115,8 @@ docker swarm leave --force      # Take down a single node swarm from the manager
 ```cmd
 docker rmi $(docker images)
 docker rm $(docker ps -a)
+# remove all exited containers
+docker ps -a | grep Exit | cut -d ' ' -f 1 | xargs sudo docker rm
 ```
 #### Run cassandra
 ```cmd
