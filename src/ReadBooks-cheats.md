@@ -23,3 +23,12 @@
 * Assume that the person you are listening to might know something you don't
 * Be precise in your speech
 * Do not bother children when they are skateboarding
+
+#### The Memory Book
+
+1. Linking and making your pictures ridiculous, illogical by applying one or more of the below rules to any picture
+   * Rule of Substitution 
+   * Rule of Out of Proportion
+   * Rule of Exaggeration.
+   * Rule of Action
+2. 
