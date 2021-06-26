@@ -194,5 +194,25 @@ struct User {
   }
   ```
 
-* Associated functions :  Another useful feature of `impl` blocks is that we’re allowed to define functions within `impl` blocks that *don’t* take `self` as a parameter. These are called *associated functions* because they’re associated with the struct. They’re still functions, not methods, because they don’t have an instance of the struct to work with. You’ve already used the `String::from` associated function. Associated functions are often used for constructors that will return a new instance of the struct
+* Associated functions :  Another useful feature of `impl` blocks is that we’re allowed to define functions within `impl` blocks that *don’t* take `self` as a parameter. These are called *associated functions* because they’re associated with the struct. They’re still functions, not methods, because they don’t have an instance of the struct to work with. You’ve already used the `String::from` associated function. Associated functions are often used for constructors that will return a new instance of the struct.
+
+### *Enumerations or Enums* 
+
+```rust
+enum IpAddrKind {
+    V4,
+    V6,
+}
+```
+
+##### Optional Enums
+
+```rust
+enum Option<T> {
+    Some(T),
+    None,
+}
+```
+
+
 
