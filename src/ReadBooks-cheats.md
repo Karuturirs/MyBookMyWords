@@ -64,15 +64,26 @@
   1. Do you want to own the whole business?
   2. Do you understand it well enough to own all of it?
 
-* The five Moats include:
+* The five Moats include: (Not all below need for wonderful company)
 
-  	1. Brand
-   	2. Secret
-   	3. Toll
-   	4. Switching
-   	5. Price
+   1. Brand : A product you're willing to pay more for because you trust it - ex: coke, nike, Disney
 
-* 
+   2. Secret : A business with a ptemt or trade secret that makes direct competition illegal ot very difficult ex: Pfizer, Intel
+
+   3. Toll : A business with exclusive control of a market - giving it the ability to collect a toll from anyone needing that service or product Ex: media, utilities, ad agencies.
+
+   4. Switching : A business that is so much a part of your life that switching isn't worth the trouble. Ex: Microsoft, H&R Block
+
+   5. Price : A business that can price products so low no one can compete Ex: walmart, Costco,Target, home Depot
+
+      
+
+* **Big Five numbers** 
+
+  1. **Return on Investment Capital (ROIC)** : rate of return a business makes on the cash it invests in itself every year. If a business has no healthy ROIC - above 10% per year on average for the last 10 years - move on to another one.
+  2. **Sales growth rate** : Sales are the total amount of money the business took in from selling what ever widgets and digits it sells. Seeing 10 years will give an idea if sales are going consistently. If they are amount of growth above last year can be calculated.
+  3. **Earnings per Share (EPS)** growth rate : How much business is profiting per share of ownership.
+  4. **Equity, or Book Value per Share (BVPS) ** growth rate:   
 
 
  #### The Magic of thinking Big
