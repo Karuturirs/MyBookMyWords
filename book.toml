@@ -6,4 +6,8 @@ title = "MyBook MyWords"
 
 [output.html]
 mathjax-support = true
+additional-js = ["mermaid.min.js", "mermaid-init.js"]
+
+[preprocessor.mermaid]
+command = "mdbook-mermaid"
 

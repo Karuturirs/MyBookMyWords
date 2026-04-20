@@ -8,8 +8,34 @@ Detailed reading notes from [Stanford CME295 | Autumn 2025 | Lecture 1 - Transfo
 The lecture categorizes Natural Language Processing (NLP) into three main functional buckets:
 
 *   **Classification:** Single output from text (e.g., Sentiment analysis, Intent detection).
+    ```mermaid
+        graph LR
+            A["This teddy bear is SO CUTE!"] --> B[Model]
+            B --> C(("Positive"))
+
+            style A fill:#e8e8ff,stroke:#b2b2ff
+            style B fill:#d0e0ff,stroke:#7090d0
+            style C fill:#dcf0d1,stroke:#82ad6d
+    ```
+
 *   **Multi-classification:** Multiple labels for a single text (e.g., Named Entity Recognition or NER).
+    ```mermaid
+    graph LR
+    A["A cute teddy bear is reading..."] --> B[Model]
+    B --> C["A cute <mark>teddy bear</mark> is reading..."]
+
+    style C fill:#dcf0d1,stroke:#82ad6d
+    style B fill:#d0e0ff,stroke:#7090d0
+    ```
+
 *   **Generation:** Text in, variable-length text out (e.g., Machine Translation, Summarization, Chatbots).
+    ```mermaid
+        graph LR
+        A["A cute teddy bear is reading"] --> B[Model]
+        B --> C["Un ours en peluche mignon lit"]
+
+        style B fill:#d0e0ff,stroke:#7090d0
+    ```
 
 ### Evaluation Metrics
 | Metric | Purpose |
@@ -18,16 +44,26 @@ The lecture categorizes Natural Language Processing (NLP) into three main functi
 | **BLEU / ROUGE** | Rule-based metrics comparing model output to reference text. |
 | **Perplexity** | Measures how "surprised" a model is by its output (lower is better). |
 
-#### Deep Dive: Precision vs. Recall
-In classification tasks, accuracy isn't enough—especially when dealing with imbalanced datasets. We use these two metrics to judge the model's reliability:
+#### Deep Dive: Accuracy, Precision, and Recall
+In classification tasks, accuracy isn't enough—especially when dealing with imbalanced datasets. To understand these metrics, we first need the four components of a **Confusion Matrix**:
 
-| Feature | Precision | Recall |
-| :--- | :--- | :--- |
-| **Key Question** | "How accurate are my positive hits?" | "How many of the actual targets did I find?" |
-| **Goal** | **Quality:** Measures how many of the model's positive predictions were correct. | **Quantity:** Measures how many of the actual positive cases were caught. |
-| **Formula** | \\( \frac{TP}{TP + FP} \\) | \\( \frac{TP}{TP + FN} \\) |
-| **Example** | 7/10 spam flags are correct (70%). | 10/20 actual spam emails were caught (50%). |
-| **Penalty** | Punishes **False Positives (FP)** (e.g., flagging work email as spam). | Punishes **False Negatives (FN)** (e.g., missing a real spam email). |
+*   **TP (True Positives):** Correctly predicted as positive.
+*   **TN (True Negatives):** Correctly predicted as negative.
+*   **FP (False Positives):** Incorrectly predicted as positive (Type I error / "False Alarm").
+*   **FN (False Negatives):** Incorrectly predicted as negative (Type II error / "Miss").
+
+**Basic Accuracy Formula:**
+\\[ \text{Accuracy} = \frac{\text{Correct Predictions}}{\text{Total Predictions}} = \frac{TP + TN}{TP + TN + FP + FN} \\]
+
+We use these components to judge the model's reliability across different dimensions:
+
+| Feature | Accuracy | Precision | Recall |
+| :--- | :--- | :--- | :--- |
+| **Key Question** | "Overall, how often is the model correct?" | "How accurate are my positive hits?" | "How many of the actual targets did I find?" |
+| **Goal** | **Overall Correctness:** Measures both True Positives and True Negatives. | **Quality:** Measures how many positive predictions were correct. | **Quantity:** Measures how many actual positive cases were caught. |
+| **Formula** | \\( \frac{TP + TN}{TP + TN + FP + FN} \\) | \\( \frac{TP}{TP + FP} \\) | \\( \frac{TP}{TP + FN} \\) |
+| **Major Flaw** | **Misleading on imbalanced data:** High accuracy can hide a model that fails to find the minority class. | Does not account for missing actual positive cases (False Negatives). | Does not account for "false alarms" (False Positives). |
+| **Example** | 95/100 correct overall (95%). | 7/10 spam flags are correct (70%). | 10/20 actual spam emails caught (50%). |
 
 #### The F1 Score: The Balance
 The **F1 Score** is the harmonic mean of Precision and Recall. It is used when you need a single number to represent model performance while balancing the trade-offs between precision and recall.
@@ -49,7 +85,8 @@ The **F1 Score** is the harmonic mean of Precision and Recall. It is used when y
 Models do not understand text; they understand numbers. This requires two steps:
 
 ### Step A: Tokenization
-The process of breaking text into units (tokens).
+The process of breaking text into units of text (tokens).
+*   **Arbitary:** Split aribiaty with unit of text.
 *   **Word-level:** Simple but suffers from "Out of Vocabulary" (OOV) issues.
 *   **Character-level:** Robust but computationally slow and lacks semantic meaning per unit.
 *   **Subword-level:** The modern standard; balances vocabulary size and captures word roots (e.g., "bear" vs "bears").

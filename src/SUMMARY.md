@@ -19,7 +19,6 @@
 - [Yieldscan](./yieldscan.md)
 - [Python](./Python-learning.md)
 - [R](./R.md)
-- [Vue](./Vue.md)
 - [Work](./work.md)
    - [Customer Setup](./work/customer-localsetup.md)
    - [Spark Local](./work/SparkJobs.md)
